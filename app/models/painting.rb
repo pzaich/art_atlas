@@ -7,4 +7,5 @@ class Painting < ActiveRecord::Base
   	"#{self.address}"
   end
 
+
 end

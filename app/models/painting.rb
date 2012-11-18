@@ -2,7 +2,8 @@ class Painting < ActiveRecord::Base
 	require 'open-uri'
 	attr_accessor :painting_url
   attr_accessible :gmaps, :latitude, :longitude, :artist, :address, :painting_url, :name
-  acts_as_gmappable
+  belongs_to :artist
+  #acts_as_gmappable
   before_validation :build_portrait_profile
 
   def gmaps4rails_address

@@ -8,15 +8,18 @@ class Artist < ActiveRecord::Base
 
   def build_artist_profile
   	page = Nokogiri::HTML(open(self.profile_url))
-  	set_artist_name(page)
+  	set_name(page)
+  	create_artist_paintings(page)
   end
 
-  def set_artist_name(page)
+  def set_name(page)
   	self.name = page.css('tr#trartworks b').first.text.gsub(/\t/, '').strip.split(',').reverse.join(' ')
   end
 
   def create_artist_paintings
-
+  	page.css('table#Datalist1 a').each do |link|
+  		self.paintings.create(link['href'].
+  	end
   end
 
 

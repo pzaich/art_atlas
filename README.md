@@ -1,1 +1,1 @@
-Art Atlas. Find world-famous art at a place near you.
+Art Atlas. Find world-famous art at locations near you.

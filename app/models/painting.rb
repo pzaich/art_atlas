@@ -11,12 +11,19 @@ class Painting < ActiveRecord::Base
   end
 
   def build_portrait_profile
-  	page = Nokogiri::HTML(open(self.painting_url))
+  	f = open(self.painting_url, "User-Agent" => "Ruby")
+  	page = Nokogiri::HTML(f)
   	set_name(page)
+    set_address(page)
+  	f.close
   end
 
   def set_name(page)
-  	self.name = page.css('span#lblTitle').first.text
+  	self.name = page.css('#title').first.text
+  end
+
+  def set_address(page)
+    self.address = page.css('#generalInfo td')[1].text.chomp.strip
   end
 
 

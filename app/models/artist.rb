@@ -7,13 +7,17 @@ class Artist < ActiveRecord::Base
   validates_presence_of :profile_url
 
   def build_artist_profile
+    #sample artist profile http://www.the-athenaeum.org/people/detail.php?ID=4820
   	page = Nokogiri::HTML(open(self.profile_url, "User-Agent" => "Ruby"))
   	set_name(page)
-  	handle_multiple_page_listings(page)
+    listing_page = Nokogiri::HTML(open("http://www.the-athenaeum.org#{page.css('#linkbar a')[2]['href']}"))
+    puts listing_page
+    #sample url http://www.the-athenaeum.org/art/list.php?m=a&s=tu&aid=4820
+  	handle_multiple_page_listings(listing_page)
   end
 
   def set_name(page)
-  	self.name = page.css('#linkbar a')[1].text.chomp.strip
+  	self.name = page.css('#title').text.chomp.strip
   end
 
   def create_artist_paintings(page)
@@ -31,8 +35,7 @@ class Artist < ActiveRecord::Base
 
   def handle_multiple_page_listings(page)
     art_pages_links = page.css('.subtitle a')[1..-1]
-    puts art_pages_links.inspect
-    if !art_pages_links.empty?
+    if art_pages_links
       art_pages_links.each do |link|
         subpage_link = "http://www.the-athenaeum.org#{link['href']}"
         puts "multiple page link: #{subpage_link}"

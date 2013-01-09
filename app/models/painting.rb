@@ -6,10 +6,11 @@ class Painting < ActiveRecord::Base
   #acts_as_gmappable
   before_create :build_portrait_profile
   has_attached_file :image, 
-    :styles => {:small => "200x", :thumb => "200x200>"}#,
-    # :storage => :s3,
-    # :s3_credentials => "#{Rails.root}/config/aws_s3.yml",
-    # :path => "painting/:attachment/:style/:id.:extension"
+    :styles => {:small => "200x", :thumb => "200x200>"},
+    :storage => :s3,
+    :s3_credentials => "#{Rails.root}/config/aws_s3.yml",
+    :path => "painting/:attachment/:style/:id.:extension",
+    :bucket => "artatlas"
 
   def gmaps4rails_address
   	"#{self.address}"

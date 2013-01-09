@@ -3,6 +3,7 @@ class Painting < ActiveRecord::Base
 	attr_accessor :painting_url
   attr_accessible :gmaps, :latitude, :longitude, :artist, :address, :painting_url, :name, :image
   belongs_to :artist
+  belongs_to :museum
   #acts_as_gmappable
   before_create :build_portrait_profile
   has_attached_file :image, 

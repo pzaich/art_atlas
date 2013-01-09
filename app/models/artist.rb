@@ -11,7 +11,6 @@ class Artist < ActiveRecord::Base
   	page = Nokogiri::HTML(open(self.profile_url, "User-Agent" => "Ruby"))
   	set_name(page)
     listing_page = Nokogiri::HTML(open("http://www.the-athenaeum.org#{page.css('#linkbar a')[2]['href']}"))
-    puts listing_page
     #sample url http://www.the-athenaeum.org/art/list.php?m=a&s=tu&aid=4820
   	handle_multiple_page_listings(listing_page)
   end

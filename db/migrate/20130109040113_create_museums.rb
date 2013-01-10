@@ -3,7 +3,7 @@ class CreateMuseums < ActiveRecord::Migration
     create_table :museums do |t|
       t.string :name
       t.float :latitude
-      t.float :longtitude
+      t.float :longitude
       t.boolean :gmaps
 
       t.timestamps

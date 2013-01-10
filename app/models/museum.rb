@@ -1,10 +1,9 @@
 class Museum < ActiveRecord::Base
-  attr_accessor :location
-  attr_accessible :gmaps, :latitude, :longtitude, :name, :location
+  attr_accessible :gmaps, :latitude, :longitude, :name
   acts_as_gmappable
   has_many :paintings
 
   def gmaps4rails_address
-    "#{self.location}"
+    "#{self.name}"
   end
 end

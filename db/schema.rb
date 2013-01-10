@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20130109041625) do
   create_table "museums", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
-    t.float    "longtitude"
+    t.float    "longitude"
     t.boolean  "gmaps"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

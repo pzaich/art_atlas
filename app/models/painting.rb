@@ -1,7 +1,7 @@
 class Painting < ActiveRecord::Base
 	require 'open-uri'
 	attr_accessor :painting_url
-  attr_accessible :gmaps, :latitude, :longitude, :artist, :address, :painting_url, :name, :image, :museum
+  attr_accessible :gmaps, :artist, :address, :painting_url, :name, :image, :museum
   belongs_to :artist
   belongs_to :museum
   #acts_as_gmappable
@@ -16,6 +16,7 @@ class Painting < ActiveRecord::Base
   # def gmaps4rails_address
   # 	"#{self.address}"
   # end
+  scope :mappable, where("museum_id is NOT NULL")
 
   def build_portrait_profile
   	f = open(self.painting_url, "User-Agent" => "Ruby")
@@ -65,6 +66,18 @@ class Painting < ActiveRecord::Base
     File.delete(location)
   end
 
+  def latitude
+    self.museum.latitude if self.museum
+  end
+
+  def longitude
+    self.museum.longitude if self.museum
+  end
+
+  def self.to_mappable_json
+    paintings = self.mappable.collect{|painting| {"lat" => painting.latitude, "lng" => painting.longitude}}
+    paintings.to_json
+  end
  
 
 

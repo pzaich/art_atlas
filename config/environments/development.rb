@@ -36,4 +36,14 @@ ArtAtlas::Application.configure do
   config.assets.debug = true
 
   Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => 'artatlas',
+    :access_key_id => "AKIAILDZXNELHCFDHFLA",
+    :secret_access_key => "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"
+
+    }
+  }
 end

@@ -25,9 +25,9 @@
           .container
             .row-fluid
               = render 'shared/search_form'
-              = link_to root_path, :class => "current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location"} do
+              = link_to root_path, :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location"} do
                 %i.icon-map-marker
-              = link_to '#', :class => "current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Advanced settings"} do
+              = link_to '#', :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Advanced settings"} do
                 %i.icon-cog              
 
 

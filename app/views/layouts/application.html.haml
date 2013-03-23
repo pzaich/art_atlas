@@ -21,16 +21,15 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
           %a.brand(href="#") ArtAtlas
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+          .container
+            .row-fluid
+              = render 'shared/search_form'
+              = link_to root_path, :class => "current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location"} do
+                %i.icon-map-marker
+              = link_to '#', :class => "current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Advanced settings"} do
+                %i.icon-cog              
+
 
       = yield
     

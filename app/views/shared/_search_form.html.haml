@@ -1,0 +1,4 @@
+.span8
+  = form_tag root_path, :class => 'form-inline' do
+    = search_field_tag :query, params[:query], :placeholder => "Search by location, artist or museum", :class => "input-xxlarge"
+    = submit_tag "Find", :class => "btn"

@@ -1,0 +1,2 @@
+$ ->
+  $('.nav-utils').tooltip()

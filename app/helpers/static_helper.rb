@@ -2,8 +2,12 @@ module StaticHelper
 
   def gmaps_options(marker_data)
     {
-      :"markers" => {:"data" => marker_data},
-      :"map_options" => {:"center_latitude" => 10, :"center_longitude" => 0, :"zoom" => 3, :"auto_adjust" => false}
+      :markers => {:data => marker_data, :options => {"custom_infowindow_class" => "painting-info"}},
+      :map_options => {:center_latitude => 10, 
+                         :center_longitude => 0, 
+                         :zoom => 3, 
+                         :auto_adjust => false
+                        }
     }
   end
 end

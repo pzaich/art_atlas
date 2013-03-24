@@ -7,9 +7,10 @@ class Painting < ActiveRecord::Base
   #acts_as_gmappable
   before_create :build_portrait_profile
   has_attached_file :image, 
-    :styles => {:small => "200x", :thumb => "200x200#"},
+    :styles => {:small => "200x", :thumb => "200#"},
     :storage => :s3,
-    :path => "painting/:attachment/:style/:id.:extension"
+    :path => "painting/:attachment/:style/:id.:extension",
+    :convert_options => { :all => '-interlace Line' }
 
   # def gmaps4rails_address
   # 	"#{self.address}"
@@ -73,7 +74,7 @@ class Painting < ActiveRecord::Base
   end
 
   def self.to_mappable_json
-    paintings = self.mappable.collect{|painting| {"lat" => painting.latitude, "lng" => painting.longitude}}
+    paintings = self.mappable.collect{|painting| {:lat => painting.latitude, :lng => painting.longitude,:title => painting.name, :description => "hello"}}
     paintings.to_json
   end 
 

@@ -215,6 +215,7 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
         boxText.setAttribute("class", @markers_conf.custom_infowindow_class) #to customize
         boxText.innerHTML = marker_container.description
         marker_container.infowindow = new InfoBox(@infobox(boxText))
+        console.log(marker_container.infowindow)
         currentMap = this
         google.maps.event.addListener(marker_container.serviceObject, 'click', @openInfoWindow(currentMap, marker_container.infowindow, marker_container.serviceObject))
       else

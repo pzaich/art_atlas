@@ -20,4 +20,7 @@ body {
 
 }
 
-.painting-info{ border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px; position:absolute; z-index: 5000; }
+.painting-info{ 
+  opacity: 1.0;
+  border: 1px solid black; margin-top: 8px; background: white; padding: 5px;
+}

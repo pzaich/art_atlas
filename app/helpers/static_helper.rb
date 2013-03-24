@@ -18,7 +18,7 @@ module StaticHelper
     }
   end
 
-  def set_for_location(data) 
+  def set_for_location(data)
     data[:map_options][:center_longitude] = nil
     data[:map_options][:center_latitude] = nil
     data[:map_options][:detect_location] = true

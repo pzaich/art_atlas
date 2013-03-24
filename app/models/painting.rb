@@ -7,7 +7,7 @@ class Painting < ActiveRecord::Base
   #acts_as_gmappable
   before_create :build_portrait_profile
   has_attached_file :image, 
-    :styles => {:small => "200x", :thumb => "200#"},
+    :styles => {:small => "200x", :thumb => "200x200#"},
     :storage => :s3,
     :path => "painting/:attachment/:style/:id.:extension",
     :convert_options => { :all => '-interlace Line' }

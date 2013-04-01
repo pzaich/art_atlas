@@ -6,6 +6,7 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'pg_search'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'nokogiri'

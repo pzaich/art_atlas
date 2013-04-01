@@ -1,4 +1,5 @@
 class Painting < ActiveRecord::Base
+  include PgSearch
 	require 'open-uri'
 	attr_accessor :painting_url
   attr_accessible :gmaps, :artist, :address, :painting_url, :name, :image, :museum
@@ -17,7 +18,9 @@ class Painting < ActiveRecord::Base
   # 	"#{self.address}"
   # end
   scope :mappable, where("museum_id is NOT NULL")
-
+  pg_search_scope :search_by_artist, 
+                  :associated_against => { :artist => :name},
+                  :using => { :tsearch => {:dictionary => 'english'}}
   def build_portrait_profile
   	f = open(self.painting_url, "User-Agent" => "Ruby")
   	page = Nokogiri::HTML(f)

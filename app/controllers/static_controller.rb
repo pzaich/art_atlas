@@ -1,7 +1,7 @@
 class StaticController < ApplicationController
   def home
     #@museums = Museum.all.to_gmaps4rails
-    if !params[:query].empty?
+    if !params[:query].nil? && !params[:query].empty?
       @paintings = Painting.near(params[:query])
     else
       @paintings = Painting.scoped

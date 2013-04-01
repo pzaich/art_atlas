@@ -1,6 +1,3 @@
 = gmaps(gmaps_options(@paintings, params[:detect_location]))
-/ %p
-/   = @museums
-/ %p= @paintings
 - content_for :scripts do
   = render 'set_info_windows'

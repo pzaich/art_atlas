@@ -2,7 +2,7 @@ module StaticHelper
 
   def gmaps_options(marker_data, detect_location = false)
     data = default_settings(marker_data)
-    if !params[:query].empty?
+    if !params[:query].nil? && !params[:query].empty?
       data[:map_options][:auto_adjust] = true
     elsif detect_location
       set_for_user_location(data)

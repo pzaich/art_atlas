@@ -25,10 +25,19 @@
           .container
             .row-fluid
               = render 'shared/search_form'
-              = link_to root_path(:detect_location => true), :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location"} do
-                %i.icon-map-marker
-              = link_to '#', :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Advanced settings"} do
-                %i.icon-cog              
+              .btn-toolbar
+                .btn-group
+                  = link_to '#',:class => "btn nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Include Paintings"} do
+                    %i.icon-picture
+                  = link_to '#',:class => "btn nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Include Artists"} do
+                    %i.icon-user
+                  = link_to '#',:class => "btn nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Include Museums"} do
+                    %i.icon-book
+                  = link_to root_path(:detect_location => true), :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location"} do
+                    %i.icon-map-marker
+                .btn-group
+                  = link_to '#', :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Advanced settings"} do
+                    %i.icon-cog              
 
 
       = yield

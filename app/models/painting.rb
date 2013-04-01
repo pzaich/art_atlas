@@ -5,7 +5,8 @@ class Painting < ActiveRecord::Base
   belongs_to :artist
   belongs_to :museum
   #acts_as_gmappable
-  before_create :build_portrait_profile
+  reverse_geocoded_by :latitude, :longitude
+  before_create :build_portrait_profile, :set_coordinates!
   has_attached_file :image, 
     :styles => {:small => "200x", :thumb => "200x200#"},
     :storage => :s3,
@@ -65,12 +66,11 @@ class Painting < ActiveRecord::Base
     File.delete(location)
   end
 
-  def latitude
-    self.museum.latitude if self.museum
-  end
-
-  def longitude
-    self.museum.longitude if self.museum
+  def set_coordinates!
+    if (self.latitude.nil? || self.longitude.nil?) && self.museum
+      self[:longitude] = self.museum.longitude
+      self[:latitude] = self.museum.latitude
+    end
   end
 
   def self.to_mappable_json

@@ -1,12 +1,11 @@
 .span8
   = form_tag root_path, :class => 'form-inline', :method => 'get' do
-    = search_field_tag :query, params[:query], :placeholder => "artist name", :class => "input-xlarge"
+    = search_field_tag :query, params[:query], :placeholder => "artist", :class => "input-xlarge"
     near
     = search_field_tag :location, params[:location], :placeholder => "address, city, or state"
-    - if params[:detect_location]
-      = link_to root_path, :class => "btn current-location nav-utils active", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location"} do
-        %i.icon-map-marker
-    - else
-      = link_to root_path(:detect_location => true), :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location"} do
-        %i.icon-map-marker
+    = link_to root_path, :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location", :toggle => "button"} do
+      %i.icon-map-marker
+    .hidden
+      = check_box_tag :detect_location, params[:detect_location]
+    
     = submit_tag "Find", :class => "btn"

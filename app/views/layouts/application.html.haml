@@ -21,7 +21,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid
-          %a.brand(href="#") ArtAtlas
+          =link_to "ArtAtlas", root_path, :class => "brand"
           .container
             .row-fluid
               = render 'shared/search_form'

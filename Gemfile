@@ -12,6 +12,7 @@ gem 'gmaps4rails'
 gem 'nokogiri'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.3.4'
+gem 'activerecord-tableless'
 
 # Gems used only for assets and not required
 # in production environments by default.

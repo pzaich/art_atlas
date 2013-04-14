@@ -3,5 +3,6 @@
     = search_field_tag :query, params[:query], :placeholder => "artist", :class => "input-xlarge"
     near
     = search_field_tag :location, params[:location], :placeholder => "address, city, or state"
-    
+    = link_to root_path, :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use current location?"} do
+      %i.icon-map-marker
     = submit_tag "Find", :class => "btn"

@@ -8,7 +8,11 @@ class Search
   end
 
   def find_paintings_by_artist_name
-    @paintings = Painting.search_by_artist(@query)
+    if !@query.blank?
+      @paintings = Painting.search_by_artist(@query)
+    else
+      @paintings = Painting.scoped
+    end
   end
 
   def filter_location

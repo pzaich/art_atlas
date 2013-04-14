@@ -1,10 +1,6 @@
 class StaticController < ApplicationController
   def home
-    if !params[:query].blank?
-      @paintings = Search.new(params[:query], params[:location]).paintings
-    else
-      @paintings = Painting.scoped
-    end
+    @paintings = Search.new(params[:query], params[:location]).paintings
     @paintings = @paintings.mappable.collect{ |painting| {
         :lat => painting.latitude, 
         :lng => painting.longitude,

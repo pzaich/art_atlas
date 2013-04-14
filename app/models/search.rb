@@ -17,9 +17,22 @@ class Search
 
   def filter_location
     if !@location.blank?
-      @paintings = @paintings.near(@location, 40)
+      convert_to_coordinates if are_coordinates?
+      @paintings = @paintings.near(@location, 1000)
     else
       @paintings
     end
   end
+  private
+    def are_coordinates?
+      if @location.split(',').first =~ /^\s*[+-]?((\d+_?)*\d+(\.(\d+_?)*\d+)?|\.(\d+_?)*\d+)(\s*|([eE][+-]?(\d+_?)*\d+)\s*)$/
+        true
+      else
+        false
+      end
+    end
+
+    def convert_to_coordinates
+      @location.split('%2C').collect{|i| i.to_f}
+    end
 end

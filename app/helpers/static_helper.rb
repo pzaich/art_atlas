@@ -4,8 +4,6 @@ module StaticHelper
     data = default_settings(marker_data)
     if !params[:location].blank? || !params[:query].blank?
       data[:map_options][:auto_adjust] = true
-    elsif detect_location
-      set_for_user_location(data)
     end
     data
   end
@@ -21,15 +19,5 @@ module StaticHelper
                       }
     }
   end
-
-  def set_for_user_location(data)
-    data[:map_options][:center_longitude] = nil
-    data[:map_options][:center_latitude] = nil
-    data[:map_options][:detect_location] = true
-    data[:map_options][:center_on_user] = true
-    data[:map_options][:zoom] = 7
-  end
-
-
 
 end

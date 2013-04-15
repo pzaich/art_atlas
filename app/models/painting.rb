@@ -14,6 +14,7 @@ class Painting < ActiveRecord::Base
     :path => "painting/:attachment/:style/:id.:extension",
     :convert_options => { :all => '-interlace Line' }
 
+  validates_uniqueness_of :name, :scope => :artist_id
   # def gmaps4rails_address
   # 	"#{self.address}"
   # end

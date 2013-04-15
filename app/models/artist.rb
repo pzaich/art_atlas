@@ -5,6 +5,7 @@ class Artist < ActiveRecord::Base
   has_many :paintings
   after_create :build_artist_profile
   validates_presence_of :profile_url
+  validates_uniqueness_of :name
 
   def build_artist_profile
     #sample artist profile http://www.the-athenaeum.org/people/detail.php?ID=4820

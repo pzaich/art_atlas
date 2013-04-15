@@ -21,14 +21,15 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid
-          =link_to "ArtAtlas", root_path, :class => "brand"
-          .container
-            .row-fluid
+          .row-fluid
+            .span1
+              =link_to "ArtAtlas", root_path, :class => "brand"
+            .span11
               = render 'shared/search_form'
-              / .btn-toolbar
-              /   .btn-group
-              /     = link_to '#', :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Advanced settings"} do
-              /       %i.icon-cog              
+          / .btn-toolbar
+          /   .btn-group
+          /     = link_to '#', :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Advanced settings"} do
+          /       %i.icon-cog              
 
 
       = yield

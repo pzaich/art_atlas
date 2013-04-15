@@ -18,7 +18,7 @@ class Search
   def filter_location
     if !@location.blank?
       convert_to_coordinates if are_coordinates?
-      @paintings = @paintings.near(@location, 1000)
+      @paintings = @paintings.near(@location, 100)
     else
       @paintings
     end

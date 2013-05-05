@@ -22,7 +22,7 @@ class Artist
 
       def handle_multiple_page_listings
         art_pages_links = @listing_page.css('.subtitle a')[1..-1]
-        if art_pages_links
+        if !art_pages_links.empty?
           art_pages_links.each do |link|
             subpage_link = "http://www.the-athenaeum.org#{link['href']}"
             puts "multiple page link: #{subpage_link}"
@@ -30,7 +30,7 @@ class Artist
             create_artist_paintings(subpage)
           end
         else
-          create_artist_paintings(page)
+          create_artist_paintings(@listing_page)
         end
       end
 

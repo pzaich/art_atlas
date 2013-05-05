@@ -11,6 +11,7 @@ class PaintingGenerator
                     :museum => @museum, 
                     :image => @image,
                     :artist => artist)
+    delete_image
   end
 
   private
@@ -40,26 +41,25 @@ class PaintingGenerator
     end
     #rails root is not in this file
     def process_image(page)
-      location = "#{Rails.root}/tmp/#{@name}.jpg"
-      save_image_to_tmp(page, location)
-      #set_attachment(location)
-      #delete_image(location)
+      @location = "#{Rails.root}/tmp/#{@name}.jpg"
+      save_image_to_tmp(page)
+      set_attachment
     end
 
-    def save_image_to_tmp(page, location)
+    def save_image_to_tmp(page)
       img_src = page.css('#imgTextHolder img').first['src']
-      File.open(location , 'wb') do |saved_file|
+      File.open(@location , 'wb') do |saved_file|
         open("http://www.the-athenaeum.org/art/#{img_src}", 'rb') do |read_file|
           saved_file.write(read_file.read)
         end
       end
     end
 
-    def set_attachment(location)
-      @image = File.open(location)
+    def set_attachment
+      @image = File.open(@location)
     end
 
-    def delete_image(location)
-      File.delete(location)
+    def delete_image
+      File.delete(@location)
     end
 end

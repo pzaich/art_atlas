@@ -10,12 +10,6 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
-    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
-    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
-    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
-    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
-    %link(href="images/favicon.ico" rel="shortcut icon")
-
 
   %body
     .navbar.navbar-fixed-top
@@ -23,19 +17,16 @@
         .container-fluid
           .row-fluid
             .span1
-              =link_to "ArtAtlas", root_path, :class => "brand"
+              =link_to root_path, :class => "brand" do
+                %i.icon-map-marker
+                rtNearMe
             .span11
-              = render 'shared/search_form'
-          / .btn-toolbar
-          /   .btn-group
-          /     = link_to '#', :class => "btn current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Advanced settings"} do
-          /       %i.icon-cog              
+              = render 'shared/search_form'             
 
 
       = yield
     
-      %footer.footer
-        %p &copy; Company 2012
+      = render 'shared/footer'
     /
       Javascripts
       \==================================================

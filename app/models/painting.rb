@@ -15,7 +15,6 @@ class Painting < ActiveRecord::Base
     :path => "painting/:attachment/:style/:id.:extension",
     :convert_options => { :all => '-interlace Line' }
   validates_presence_of :museum_id
-  validates_uniqueness_of :name, :scope => :artist_id
   scope :mappable, where("museum_id is NOT NULL")
   pg_search_scope :search_by_artist, 
                   :associated_against => { :artist => :name},

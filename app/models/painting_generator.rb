@@ -29,7 +29,7 @@ class PaintingGenerator
 
     def set_address(page)
       raw_address = page.css('#generalInfo td')[1].text.chomp.strip
-      if raw_address =~ /private collection|unknown/i
+      if (raw_address =~ /private collection|unknown/i).nil?
         @address = raw_address
         set_museum
       end    

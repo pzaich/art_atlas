@@ -8,6 +8,8 @@
   left: 0;
   width: 100%;
   background: #fff;
+  text-align: center;
+  box-shadow: 0 -1px 10px rgba(0,0,0,.1);
   p {
     margin: 2px 0;
   }
@@ -36,11 +38,8 @@ body {
           box-shadow: none;
           font-size: 20px;
           line-height: 26px;
-          width: 42%;
-        }
-        .btn-primary {
-          position: relative;
-          top: -2px;
+          width: calc(50% - 40px);
+          *width: 42%;
         }
       }
       .current-location {
@@ -53,6 +52,9 @@ body {
         }
       }
     }
+    #query-submit {
+      margin-top: -2px;
+    }
     
   }
 
@@ -62,7 +64,7 @@ body {
 .painting-info{
   position:relative;
   opacity: 1.0;
-  border: 5px solid rgba(77,166,255, .8);
+  border: 5px solid rgba(77,166,255, 1);
   border-radius: 3px;
   margin-top: 8px; 
   background: white; 
@@ -77,22 +79,33 @@ body {
     border-right: 11px solid transparent;
     border-bottom: 11px solid #ccc;
     border-left: 11px solid transparent;
-    border-bottom-color: rgba(77,166,255, .8);
+    border-bottom-color: rgba(77,166,255, 1);
     content: '';
   }
   &:after {
     right: 15px;
     left: auto;
     position: absolute;
-    top: -8px;
+    top: -9px;
     display: inline-block;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid #ffffff;
-    border-left: 8px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #ffffff;
+    border-left: 9px solid transparent;
     content: '';
   }
 }
 
-#location {
-  
+.brand {
+  i {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-container {
+    text-align: center;
+    .brand {
+      float:none;
+    }
+  }
 }

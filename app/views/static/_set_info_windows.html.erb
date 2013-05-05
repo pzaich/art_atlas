@@ -1,22 +1,25 @@
 <script type="text/javascript">
- Gmaps.map.infobox = function(boxText) {
-  return {
-     content: boxText
-    ,disableAutoPan: false
-    ,maxWidth: 0
-    ,pixelOffset: new google.maps.Size(-192, -2)
-    ,zIndex: null
-    ,boxStyle: { 
-      opacity: 1.0
-      ,width: "220px"
-       }
-    ,closeBoxMargin: "10px 2px 2px 2px"
-    ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-    ,infoBoxClearance: new google.maps.Size(1, 1)
-    ,isHidden: false
-    ,pane: "floatPane"
-    ,enableEventPropagation: false
- }};
+  $(function () {
+    Gmaps.map.infobox = function(boxText) {
+     return {
+        content: boxText
+       ,disableAutoPan: false
+       ,maxWidth: 0
+       ,pixelOffset: new google.maps.Size(-192, -2)
+       ,zIndex: null
+       ,boxStyle: { 
+         opacity: 1.0
+         ,width: "220px"
+          }
+       ,closeBoxMargin: "10px 2px 2px 2px"
+       ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+       ,infoBoxClearance: new google.maps.Size(1, 1)
+       ,isHidden: false
+       ,pane: "floatPane"
+       ,enableEventPropagation: false
+    }};
+  });
+
 
 
 </script>

@@ -6,9 +6,8 @@ class Artist
         begin
           sleep 1
           painting_link = "http://www.the-athenaeum.org/art/#{link['href']}"
-          self.paintings.build(:painting_url => painting_link)
+          PaintingGenerator.new(painting_link, self)
           puts "add painting"
-          self.paintings.last.drop if self.paintings.last.museum_id.nil?
         rescue
           "rescued http://www.the-athenaeum.org/art/#{link['href']}"
         end
@@ -21,8 +20,8 @@ class Artist
         self.name = page.css('#title').text.chomp.strip
       end
 
-      def handle_multiple_page_listings(page)
-        art_pages_links = page.css('.subtitle a')[1..-1]
+      def handle_multiple_page_listings
+        art_pages_links = @listing_page.css('.subtitle a')[1..-1]
         if art_pages_links
           art_pages_links.each do |link|
             subpage_link = "http://www.the-athenaeum.org#{link['href']}"

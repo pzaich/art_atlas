@@ -10,7 +10,7 @@ namespace :generate do
         a = Artist.create(:profile_url => "http://www.the-athenaeum.org/people/#{link['href']}")
         puts "Created artist #{a.name} and relevant paintings"
       rescue
-        "failed for #{link.text}"
+        puts "failed for #{link.text}"
       end
     end
   end

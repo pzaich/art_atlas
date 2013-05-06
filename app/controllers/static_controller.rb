@@ -1,7 +1,7 @@
 class StaticController < ApplicationController
   def home
     @paintings = Search.new(params[:query], params[:location]).paintings
-    @paintings = @paintings.mappable.collect{ |painting| {
+    @paintings = @paintings.collect{ |painting| {
         :lat => painting.latitude, 
         :lng => painting.longitude,
         :title => painting.name, 

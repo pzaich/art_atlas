@@ -30,9 +30,4 @@ class Painting < ActiveRecord::Base
     end
   end
 
-  def self.to_mappable_json
-    paintings = self.mappable.collect{|painting| {:lat => painting.latitude, :lng => painting.longitude,:title => painting.name, :description => "hello"}}
-    paintings.to_json
-  end 
-
 end

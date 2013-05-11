@@ -4,7 +4,10 @@ class Artist < ActiveRecord::Base
 
 	attr_accessor :profile_url
   attr_accessible :name, :profile_url
+
   has_many :paintings, :dependent => :destroy
+  has_many :museums, :through => :paintings, :uniq => true
+
   before_validation :build_artist_profile, :on => :create
   after_commit :load_paintings, :on => :create
   validates_presence_of :profile_url

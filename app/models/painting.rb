@@ -20,7 +20,9 @@ class Painting < ActiveRecord::Base
                   :associated_against => { :artist => :name},
                   :using => { :tsearch => {:dictionary => 'english'}}
 
-
+  def template
+    'paintings/infobox'
+  end
 
   
   def set_coordinates!

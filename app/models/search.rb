@@ -5,23 +5,23 @@ class Search
     @location = location
     find_paintings_by_artist_name
     filter_location
-    @paintings = @paintings.shuffle[0,100] if !query && !location
+    @museum = @museums.shuffle[0,100] if !query && !location
   end
 
-  def find_paintings_by_artist_name
+  def find_museums_by_artist_name
     if !@query.blank?
-      @paintings = Painting.mappable.search_by_artist(@query)
+      @museums = Museum.search_by_artist(@query)
     else
-      @paintings = Painting.mappable
+      @museums = Museum.scoped
     end
   end
 
   def filter_location
     if !@location.blank?
       convert_to_coordinates if are_coordinates?
-      @paintings = @paintings.near(@location, 100)
+      @museums = @museums.near(@location, 100)
     else
-      @paintings
+      @museums
     end
   end
   private

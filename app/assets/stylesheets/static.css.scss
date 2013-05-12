@@ -17,6 +17,7 @@
 
 body {
   .navbar {
+    position: static;
     margin-bottom: 0px;
     .brand {
       font-size: 32px;
@@ -136,6 +137,8 @@ body {
   }
 
   .navbar {
+    padding: 0 10px 0 10px;
+
     .btn-large {
 
       padding: 15px 19px;

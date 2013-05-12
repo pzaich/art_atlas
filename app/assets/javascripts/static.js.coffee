@@ -8,5 +8,16 @@ $ ->
     e.preventDefault()
   )
 
-  $('.gmaps4rails_map')
-    
+$ ->
+  helpers.updateMapDimensions()
+  $(window).resize () ->
+      helpers.updateMapDimensions()
+   
+
+
+helpers = {
+  updateMapDimensions : () ->
+    $('.gmaps4rails_map')
+      .height($(window).height() - $('.navbar').height())
+      .width($(window).width())
+}

@@ -5,7 +5,7 @@ class Search
     @location = location
     find_museums_by_artist_name
     filter_location
-    @museum = @museums.shuffle[0,100] if query.blank? && location.blank?
+    @museums = @museums.shuffle[0,100] if query.blank? && location.blank?
   end
 
   def find_museums_by_artist_name

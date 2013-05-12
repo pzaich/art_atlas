@@ -17,6 +17,7 @@
 
 body {
   .navbar {
+    margin-bottom: 0px;
     .brand {
       font-size: 32px;
       line-height: 32px;
@@ -118,6 +119,12 @@ body {
 }
 
 @media (max-width: 767px) {
+  body {
+    padding: 0 10px;
+  }
+  .gmaps4rails_map {
+    margin-left: -10px;
+  }
   .logo-container {
     text-align: center;
     .brand {

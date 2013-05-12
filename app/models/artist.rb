@@ -15,7 +15,7 @@ class Artist < ActiveRecord::Base
 
   pg_search_scope :search_by_name,
                   :against => :name,
-                  :using => { :tsearch => {:any_word => true}}
+                  :using => { :tsearch => {:any_word => true, :prefix => true}}
 
   #sample artist profile http://www.the-athenaeum.org/people/detail.php?ID=4820
   def build_artist_profile

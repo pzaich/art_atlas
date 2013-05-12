@@ -13,6 +13,11 @@ body {
         color: #4da6ff;
       }
     }
+    .typeahead {
+      width: calc(100% - 10px);
+      width: webkit-calc(100% -10px);
+      *width: 95%;
+    }
     form {
       margin: 5px 0;
       width: 100%;

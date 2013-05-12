@@ -1,7 +1,7 @@
 class StaticController < ApplicationController
   def home
     @museums = Search.new(params[:query], params[:location]).museums
-    flash.now[:notice] = "Sorry we couldn't find anything nearby that match your search." if @museums.empty?
+    flash.now[:notice] = "Sorry we couldn't find anything nearby that matches your search." if @museums.empty?
     museums_to_json
 
   end

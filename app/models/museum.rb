@@ -16,8 +16,12 @@ class Museum < ActiveRecord::Base
     "#{self.name}"
   end
 
-  def paintings_by_artist_name(name)
-    self.paintings.search_by_artist(name)
+  def paintings(name=nil)
+    if !name.blank?
+      self.paintings.search_by_artist(name)
+    else
+      super
+    end
   end
 end
   

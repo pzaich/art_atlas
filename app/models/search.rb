@@ -1,11 +1,11 @@
 class Search
-  attr_reader :paintings
+  attr_reader :museums
   def initialize(query, location)
     @query = query
     @location = location
-    find_paintings_by_artist_name
+    find_museums_by_artist_name
     filter_location
-    @museum = @museums.shuffle[0,100] if !query && !location
+    @museum = @museums.shuffle[0,100] if query.blank? && location.blank?
   end
 
   def find_museums_by_artist_name
@@ -34,6 +34,6 @@ class Search
     end
 
     def convert_to_coordinates
-      @location.split('%2C').collect{|i| i.to_f}
+      @location.split('%2C').collect!{|i| i.to_f}
     end
 end

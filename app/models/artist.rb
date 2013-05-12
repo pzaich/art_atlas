@@ -1,5 +1,5 @@
 class Artist < ActiveRecord::Base
-	require 'open-uri'
+  include PgSearch
   include ProfileBuilder
 
 	attr_accessor :profile_url
@@ -12,6 +12,10 @@ class Artist < ActiveRecord::Base
   after_commit :load_paintings, :on => :create
   validates_presence_of :profile_url
   validates_uniqueness_of :name
+
+  pg_search_scope :search_by_name,
+                  :against => :name,
+                  :using => { :tsearch => {:any_word => true}}
 
   #sample artist profile http://www.the-athenaeum.org/people/detail.php?ID=4820
   def build_artist_profile

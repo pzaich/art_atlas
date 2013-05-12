@@ -12,6 +12,7 @@
     = stylesheet_link_tag "application", :media => "all"
 
   %body
+    = render 'shared/flash', :flash => flash
     .navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid

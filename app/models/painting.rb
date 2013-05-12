@@ -19,11 +19,6 @@ class Painting < ActiveRecord::Base
   pg_search_scope :search_by_artist, 
                   :associated_against => { :artist => :name},
                   :using => { :tsearch => {:dictionary => 'english'}}
-
-  def template
-    'paintings/infobox'
-  end
-
   
   def set_coordinates!
     if (self.latitude.nil? || self.longitude.nil?) && self.museum

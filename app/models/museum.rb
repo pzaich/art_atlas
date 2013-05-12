@@ -23,5 +23,6 @@ class Museum < ActiveRecord::Base
       super
     end
   end
+
 end
   

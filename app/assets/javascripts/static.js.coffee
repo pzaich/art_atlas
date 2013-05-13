@@ -13,13 +13,15 @@ $ ->
       helpers.updateMapDimensions()
 
   $('#query').typeahead( {
-    source : (typehaed, query) ->
+    source : (typehead, query) ->
       $.getJSON($('#query').data('autocomplete-src'), {query: $('#query').val() }, (data) ->
-        console.log(data)
         query(data)
       )
     }
   )
+
+$(window).load ->
+
 
 
 helpers = {

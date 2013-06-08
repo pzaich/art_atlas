@@ -41,8 +41,8 @@ ArtAtlas::Application.configure do
   :storage => :s3,
   :s3_credentials => {
     :bucket => 'artatlas',
-    :access_key_id => "AKIAILDZXNELHCFDHFLA",
-    :secret_access_key => "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"
+    :access_key_id => ENV['AWS_ACCESS_KEY'],
+    :secret_access_key => ENV['AWS_SECRET_KEY']
 
     }
   }

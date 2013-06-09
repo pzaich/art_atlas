@@ -6,9 +6,9 @@ class Painting < ActiveRecord::Base
   belongs_to :artist
   belongs_to :museum
   has_attached_file :image, 
-    :styles => {:thumb => "200x200#"},
+    :styles => {:small => "x200", :thumb => "200x200#"},
     :path => "painting/:attachment/:style/:id.:extension",
-    :convert_options => { :thumb => '-quality 75 -strip -interlace Line' }
+    :convert_options => { :all => '-quality 75 -strip -interlace Line' }
   
   validates_presence_of :museum_id
   

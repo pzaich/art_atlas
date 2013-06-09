@@ -6,8 +6,7 @@ class PaintingGenerator
   def initialize(painting_url, artist)
     @painting_url = painting_url
     build_profile
-    @painting = Painting.create(:name => @name, 
-                    :address => @address, 
+    @painting = Painting.create(:name => @name,
                     :museum => @museum, 
                     :image => @image,
                     :artist => artist)
@@ -37,7 +36,7 @@ class PaintingGenerator
     end
 
     def set_museum
-      @museum = Museum.find_or_create_by_name(@address)
+      @museum = Museum.find_or_create_by_address(:address => @address)
     end
     #rails root is not in this file
     def process_image(page)

@@ -1,4 +1,4 @@
-= form_tag root_path, :class => 'form-inline', :method => 'get' do
+= form_tag museums_path, :class => 'form-inline', :id => "search-form", :method => 'get', :remote => true, :data => {:type => 'json' } do
   .query-wrapper
     = search_field_tag :query, params[:query], :placeholder => "artist", :class => "input-xlarge", :data => { :autocomplete_src => artists_path }, :autocomplete => 'off'
     near

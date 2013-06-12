@@ -1,6 +1,6 @@
 %h4
   = museum.name
-- paintings.each do |painting|
+- museum.paintings.each do |painting|
   - if painting.artist
     = link_to root_path(:query => painting.artist.name) do
       .inline

@@ -1,20 +1,6 @@
 class StaticController < ApplicationController
   def home
-    @museums = Search.new(params[:query], params[:location]).museums
-    flash.now[:notice] = "Sorry we couldn't find anything nearby that matches your search." if @museums.empty?
-    museums_to_json
-
+    #flash.now[:notice] = "Sorry we couldn't find anything nearby that matches your search."
   end
-
-  private
-    def museums_to_json
-      @museums = @museums.collect do |museum|
-        { :lat => museum.latitude,
-        :lng => museum.longitude,
-        :title => museum.name,
-        :description => render_to_string(:partial => 'museums/infobox', :locals => {:museum => museum, :paintings => museum.paintings(params[:query])})
-        }
-      end.to_json
-    end
 end
 

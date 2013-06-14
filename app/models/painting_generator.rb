@@ -6,10 +6,15 @@ class PaintingGenerator
   def initialize(painting_url, artist)
     @painting_url = painting_url
     build_profile
-    @painting = Painting.create(:name => @name,
+    @painting = Painting.new(:name => @name,
                     :museum => @museum, 
                     :image => @image,
                     :artist => artist)
+    if @painting.save
+      puts "added painting #{painting.name}"
+    else
+      @painting.errors.each {|error, reason| puts "#{error} #{reason}"}
+    end
     delete_image
   end
 
@@ -30,13 +35,13 @@ class PaintingGenerator
     def set_address(page)
       raw_address = page.css('#generalInfo td')[1].text.chomp.strip
       if (raw_address =~ /private collection|unknown/i).nil?
-        @address = raw_address
+        @museum_name = raw_address
         set_museum
-      end    
+      end     
     end
 
     def set_museum
-      @museum = Museum.find_or_create_by_address(:address => @address)
+      @museum = Museum.find_or_create_by_name(@museum_name)
     end
     #rails root is not in this file
     def process_image(page)

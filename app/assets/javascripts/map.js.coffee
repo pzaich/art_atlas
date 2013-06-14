@@ -23,6 +23,13 @@ A = {
   loadMarkers : (museums) ->
     window.markers = []
     $.each museums, (index, museum) ->
-      markers.push L.marker([museum.latitude, museum.longitude]).addTo(map)
+      marker = L.marker([museum.latitude, museum.longitude], {
+        clickable : true
+      })
+      marker.addTo(map)
+      markers.push marker
+      marker.on 'click', () ->
+        console.log "hello"
+  
 
 }

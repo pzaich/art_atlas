@@ -4,10 +4,8 @@ class Artist
     def create_artist_paintings(page)
       page.css('.list_title a').each_with_index do |link, index|
         begin
-          sleep 1
           painting_link = "http://www.the-athenaeum.org/art/#{link['href']}"
           PaintingGenerator.new(painting_link, self)
-          puts "add painting"
         rescue
           "rescued http://www.the-athenaeum.org/art/#{link['href']}"
         end

@@ -2,7 +2,8 @@ class Museum < ActiveRecord::Base
   include PgSearch
 
   attr_accessible :latitude, :longitude, :name, :address
-  geocoded_by :address
+  geocoded_by :name
+  reverse_geocoded_by :latitude, :longitude
 
   validates :name, :uniqueness => true
   validates :latitude, :presence => true
@@ -12,6 +13,7 @@ class Museum < ActiveRecord::Base
   has_many :artists, :through => :paintings , :uniq => true
 
   before_validation :geocode
+  after_validation :reverse_geocode
 
 
   pg_search_scope :search_by_artist, 

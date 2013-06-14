@@ -12,6 +12,7 @@ gem 'nokogiri'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'activerecord-tableless'
+gem 'delayed_job_active_record'
 gem 'jbuilder'
 
 # Gems used only for assets and not required
@@ -31,6 +32,7 @@ end
 group :development do
 	gem 'haml-rails'
   gem 'quiet_assets'
+  gem 'daemons'
 end
 
 gem 'jquery-rails'

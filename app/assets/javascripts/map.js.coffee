@@ -21,7 +21,8 @@ A = {
     #map.addLayer new L.StamenTileLayer('watercolor')
     $('#search-form').trigger('submit')
   loadMarkers : (museums) ->
-    window.markers = []
+    console.log(museums)
+    this.clearMarkers()  
     $.each museums, (index, museum) ->
       marker = L.marker([museum.latitude, museum.longitude], {
         clickable : true
@@ -30,6 +31,9 @@ A = {
       markers.push marker
       marker.on 'click', () ->
         console.log "hello"
-  
-
-}
+  clearMarkers : () ->
+    if typeof window.markers != 'undefined'
+      $.each window.markers, (index, marker) -> 
+        map.removeLayer(marker)
+    window.markers = []
+} 

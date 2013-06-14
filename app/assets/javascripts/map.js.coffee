@@ -2,8 +2,10 @@ $ ->
   A.loadMap()
   $(window).resize () ->
       A.updateMapDimensions()
-
-  $('#search-form').bind 'ajax:success', (status, xhr) ->
+  $('#search-form').on 'ajax:beforeSend', () -> 
+    $('.loading').removeClass('hide')
+  $('#search-form').on 'ajax:success', (status, xhr) ->
+    $('.loading').addClass('hide')
     A.loadMarkers(xhr.museums)
 
 A = {

@@ -82,6 +82,21 @@ body {
   #map-container {
     width: 100%;
   }
+
+  .loading {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    background: #fff;
+    color: #4DA6FF;
+    z-index: 1000000;
+    font-size: 18px;
+    padding: 4px;
+    text-align: center;
+    border-radius:3px;
+  }
 }
 
 .painting-info{

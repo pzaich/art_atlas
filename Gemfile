@@ -12,8 +12,8 @@ gem 'nokogiri'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'activerecord-tableless'
-gem 'delayed_job_active_record'
 gem 'jbuilder'
+gem 'sidekiq'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,7 +22,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem "twitter-bootstrap-rails"
   gem 'haml'
-
+  gem 'modernizr-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
   gem 'less-rails'
@@ -32,7 +32,6 @@ end
 group :development do
 	gem 'haml-rails'
   gem 'quiet_assets'
-  gem 'daemons'
 end
 
 gem 'jquery-rails'

@@ -7,6 +7,8 @@ $ ->
   $('#search-form').on 'ajax:success', (status, xhr) ->
     $('.loading').addClass('hide')
     A.loadMarkers(xhr.museums)
+    A.setMuseumListWidth()
+    console.log "museums loaded"
 
 A = {
   updateMapDimensions : () ->
@@ -23,19 +25,30 @@ A = {
     #map.addLayer new L.StamenTileLayer('watercolor')
     $('#search-form').trigger('submit')
   loadMarkers : (museums) ->
-    console.log(museums)
+    $('#museum-carousel').html('')
     this.clearMarkers()  
     $.each museums, (index, museum) ->
       marker = L.marker([museum.latitude, museum.longitude], {
         clickable : true
       })
-      marker.addTo(map)
-      markers.push marker
-      marker.on 'click', () ->
-        console.log "hello"
+      A.loadMarker(marker)
+      A.loadMuseum(museum)
+  loadMarker : (marker) ->
+    marker.addTo(map)
+    markers.push marker
+    marker.on 'click', () ->
+      console.log "hello"
   clearMarkers : () ->
     if typeof window.markers != 'undefined'
       $.each window.markers, (index, marker) -> 
         map.removeLayer(marker)
     window.markers = []
+  loadMuseum : (museum) ->
+    $('#museum-carousel').append museum.infobox
+  setMuseumListWidth: () ->
+    totalWidth = 0
+    $('#museum-carousel > li').each (index) ->
+        totalWidth += parseInt($(this).width(), 10)
+    $('#museum-carousel').width(totalWidth)
+
 } 

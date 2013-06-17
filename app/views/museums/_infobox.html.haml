@@ -1,9 +1,4 @@
-%h4
-  = museum.name
-- museum.paintings.each do |painting|
-  - if painting.artist
-    = link_to root_path(:query => painting.artist.name) do
-      .inline
-        %i.icon-user
-        = painting.artist.name
-  = image_tag(painting.image.url(:thumb))
+%li
+  %h5
+    = museum.name
+  = image_tag museum.paintings.first.image.url(:thumb)

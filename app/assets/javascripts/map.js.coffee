@@ -7,17 +7,18 @@ $ ->
   $('#search-form').on 'ajax:success', (status, xhr) ->
     $('.loading').addClass('hide')
     A.loadMarkers(xhr.museums)
+    #A.setMapCenter()
     A.setMuseumListWidth()
     console.log "museums loaded"
 
-A = {
+window.A = {
   updateMapDimensions : () ->
     $('#map-container')
-      .height($(window).height() - $('.navbar').height())
+      .height($(window).height() - $('.navbar').height() - 260)
       .width($(window).width())
   loadMap : () ->
     this.updateMapDimensions()
-    window.map = L.map('map-container').setView([51.505, -0.09], 4)
+    window.map = L.map('map-container').setView([51.505, -0.09], 2)
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'
       maxZoom: 18
@@ -31,6 +32,7 @@ A = {
       marker = L.marker([museum.latitude, museum.longitude], {
         clickable : true
         id : museum.id
+        title : museum.name
       })
       A.loadMarker(marker)
       A.loadMuseum(museum)
@@ -38,7 +40,9 @@ A = {
     marker.addTo(map)
     markers.push marker
     marker.on 'click', () ->
-      $('')
+      $('.museum-' + marker.options.id).addClass('active')
+      alert(marker.options.title)
+
   clearMarkers : () ->
     if typeof window.markers != 'undefined'
       $.each window.markers, (index, marker) -> 
@@ -51,5 +55,6 @@ A = {
     $('#museum-carousel > li').each (index) ->
         totalWidth += parseInt($(this).width(), 10)
     $('#museum-carousel').width(totalWidth)
-
+  setMapCenter: () ->
+    #need markerCluster group http://stackoverflow.com/questions/15206863/centering-map-on-array-of-markers-bounds-leaflet
 } 

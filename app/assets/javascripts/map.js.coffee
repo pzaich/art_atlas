@@ -57,4 +57,5 @@ window.A = {
     $('#museum-carousel').width(totalWidth)
   setMapCenter: () ->
     #need markerCluster group http://stackoverflow.com/questions/15206863/centering-map-on-array-of-markers-bounds-leaflet
+    #scroll to center http://stackoverflow.com/questions/12735303/how-to-change-the-map-center-in-leaflet
 } 

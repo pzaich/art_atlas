@@ -30,6 +30,7 @@ A = {
     $.each museums, (index, museum) ->
       marker = L.marker([museum.latitude, museum.longitude], {
         clickable : true
+        id : museum.id
       })
       A.loadMarker(marker)
       A.loadMuseum(museum)
@@ -37,7 +38,7 @@ A = {
     marker.addTo(map)
     markers.push marker
     marker.on 'click', () ->
-      console.log "hello"
+      $('')
   clearMarkers : () ->
     if typeof window.markers != 'undefined'
       $.each window.markers, (index, marker) -> 

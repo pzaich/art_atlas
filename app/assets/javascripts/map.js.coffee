@@ -14,11 +14,11 @@ $ ->
 window.A = {
   updateMapDimensions : () ->
     $('#map-container')
-      .height($(window).height() - $('.navbar').height() - 260)
+      .height($(window).height() - $('.navbar').height() - 140)
       .width($(window).width())
   loadMap : () ->
     this.updateMapDimensions()
-    window.map = L.map('map-container').setView([51.505, -0.09], 2)
+    window.map = L.map('map-container').setView([51.505, -0.09], 3)
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'
       maxZoom: 18

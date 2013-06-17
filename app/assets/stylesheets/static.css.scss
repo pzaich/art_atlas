@@ -101,7 +101,7 @@ body {
     position: fixed;
     width: 100%;
     bottom: 20px;
-    height: 260px;
+    height: 140px;
     left: 0;
     overflow: hidden;
     background: #f8f8f8;
@@ -110,13 +110,13 @@ body {
       overflow-x: scroll;
       overflow-y: hidden;
       li {
-        width: 240px;
+        width: 120px;
         margin-left: 10px;
         padding: 10px;
         float: left;
         h5 {
           overflow: hidden;
-          width: 240px;
+          width: 120px;
           white-space: nowrap;
           text-overflow: ellipsis;
         }

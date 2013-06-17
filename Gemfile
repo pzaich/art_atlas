@@ -15,6 +15,7 @@ gem 'activerecord-tableless'
 gem 'jbuilder'
 gem 'sidekiq'
 gem 'coffee-rails', '~> 3.2.1'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,7 +31,7 @@ group :assets do
 end
 
 group :development do
-	gem 'haml-rails'
+	
   gem 'quiet_assets'
 end
 

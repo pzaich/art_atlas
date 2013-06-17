@@ -15,14 +15,14 @@ gem 'activerecord-tableless'
 gem 'jbuilder'
 gem 'sidekiq'
 gem 'coffee-rails', '~> 3.2.1'
-gem 'haml-rails'
+gem 'haml'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem "twitter-bootstrap-rails"
-  gem 'haml'
+
   gem 'modernizr-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
@@ -31,7 +31,7 @@ group :assets do
 end
 
 group :development do
-	
+	gem 'haml-rails'
   gem 'quiet_assets'
 end
 

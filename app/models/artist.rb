@@ -19,9 +19,9 @@ class Artist < ActiveRecord::Base
 
   #sample artist profile http://www.the-athenaeum.org/people/detail.php?ID=4820
   def build_artist_profile
-    page = Nokogiri::HTML(open(self.profile_url, "User-Agent" => "Ruby"))
+    page = Nokogiri::HTML(open(self.profile_url))
     set_name(page)
-    @listing_page = Nokogiri::HTML(open("http://www.the-athenaeum.org#{page.css('#linkbar a')[2]['href']}"))
+    @listing_page = Nokogiri::HTML(open("http://www.the-athenaeum.org#{page.css('#linkbar a')[3]['href']}"))
   end
 
   #sample url http://www.the-athenaeum.org/art/list.php?m=a&s=tu&aid=4820

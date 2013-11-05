@@ -24,7 +24,7 @@ class Artist
           art_pages_links.each do |link|
             subpage_link = "http://www.the-athenaeum.org#{link['href']}"
             puts "multiple page link: #{subpage_link}"
-            subpage = Nokogiri::HTML(open(subpage_link, "User-Agent" => "Ruby"))
+            subpage = Nokogiri::HTML(open(subpage_link))
             create_artist_paintings(subpage)
           end
         else

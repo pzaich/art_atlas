@@ -20,7 +20,7 @@ class PaintingGenerator
 
   private
     def build_profile
-      f = open(@painting_url, "User-Agent" => "Ruby")
+      f = open(@painting_url)
       page = Nokogiri::HTML(f)
       set_name(page)
       set_address(page)

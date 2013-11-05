@@ -4,7 +4,6 @@ class ArtistGenerator
     @link = link
   end
 
-
   def create_artist
     begin
       a = Artist.create(:profile_url => "http://www.the-athenaeum.org/people/#{@link}")

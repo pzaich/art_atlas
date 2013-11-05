@@ -9,7 +9,8 @@ namespace :generate do
     page = Nokogiri::HTML(open('http://www.the-athenaeum.org/people/list.php?sort=name_up&ltr=!'))
     artist_links = page.css('.r1 .TextSmall > a') + page.css('.r2 .TextSmall > a')
     artist_links.each do |link|
-      ArtistWorker.perform_async(link['href'])
+      puts link['href']
+      #ArtistWorker.perform_async(link['href'])
     end
   end
 end

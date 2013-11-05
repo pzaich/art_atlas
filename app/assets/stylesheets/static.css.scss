@@ -99,12 +99,25 @@ body {
   }
   .sticky-carousel {
     position: fixed;
+    box-sizing: border-box;
+    padding: 0 50px 0 50px;
     width: 100%;
     bottom: 20px;
     height: 140px;
     left: 0;
     overflow: hidden;
-    background: #f8f8f8;
+    background: #f4f4f4;
+    .btn-affixed {
+      z-index: 200;
+      position: absolute;
+      top: 60px;
+    }
+    .btn-right{
+      right: 0;
+    }
+    .btn-left {
+      left: 0;
+    }
     .museum-list {
       margin: 0;
       overflow-x: scroll;
@@ -112,7 +125,7 @@ body {
       li {
         width: 120px;
         margin-left: 10px;
-        padding: 10px;
+        padding: 5px 10px;
         float: left;
         h5 {
           overflow: hidden;
@@ -168,6 +181,11 @@ body {
     font-size: 48px;
   }
 }
+.leaflet-control-attribution {
+  display: none;
+}
+
+
 @media (max-width: 979px) {
   .navbar-inner {
     .container-fluid {

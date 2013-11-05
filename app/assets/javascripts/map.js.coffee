@@ -9,7 +9,9 @@ $ ->
     A.loadMarkers(xhr.museums)
     #A.setMapCenter()
     A.setMuseumListWidth()
-    console.log "museums loaded"
+    
+  $('body').on 'click', '.museum-list > li', () ->
+    A.scrollToRelatedMarker(this)
 
 window.A = {
   updateMapDimensions : () ->
@@ -40,9 +42,7 @@ window.A = {
     marker.addTo(map)
     markers.push marker
     marker.on 'click', () ->
-      $('.museum-' + marker.options.id).addClass('active')
-      alert(marker.options.title)
-
+      A.carousel.setActive(marker)
   clearMarkers : () ->
     if typeof window.markers != 'undefined'
       $.each window.markers, (index, marker) -> 
@@ -58,4 +58,19 @@ window.A = {
   setMapCenter: () ->
     #need markerCluster group http://stackoverflow.com/questions/15206863/centering-map-on-array-of-markers-bounds-leaflet
     #scroll to center http://stackoverflow.com/questions/12735303/how-to-change-the-map-center-in-leaflet
-} 
+  scrollToRelatedMarker: (museum) ->
+    $(museum).data('markerID')
+}
+
+window.A.carousel = {
+  setActive : (marker) ->
+    $('.museum-list > li').removeClass('active')
+    $('.museum-' + marker.options.id).addClass('active')
+  scrollLeft : () ->
+
+  scrollRight : () -> 
+
+  scrollToActive : () ->
+
+
+}

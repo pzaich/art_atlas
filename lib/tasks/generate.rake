@@ -10,7 +10,7 @@ namespace :generate do
     artist_links = page.css('.r1 .TextSmall > a') + page.css('.r2 .TextSmall > a')
     artist_links.each do |link|
       puts link['href']
-      #ArtistWorker.perform_async(link['href'])
+      ArtistWorker.perform_async(link['href'])
     end
   end
 end

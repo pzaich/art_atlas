@@ -9,7 +9,9 @@ class PaintingGenerator
     @painting = Painting.new(:name => @name,
                     :museum => @museum, 
                     :image => @image,
-                    :artist => artist)
+                    :artist => artist,
+                    :athenaeum_id => set_athenaeum_id
+                    )
     if @painting.save
       puts "added painting #{painting.name}"
     else
@@ -26,6 +28,10 @@ class PaintingGenerator
       set_address(page)
       process_image(page)
       f.close
+    end
+
+    def set_athenaeum_id
+      @painting_url.slice! /\d{2,10}$/
     end
 
     def set_name(page)

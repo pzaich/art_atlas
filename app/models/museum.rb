@@ -6,8 +6,8 @@ class Museum < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   validates :name, :uniqueness => true
-  validates :latitude, :presence => true
-  validates :longitude, :presence => true
+  # validates :latitude, :presence => true
+  # validates :longitude, :presence => true
 
   has_many :paintings
   has_many :artists, :through => :paintings , :uniq => true

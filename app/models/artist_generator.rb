@@ -10,6 +10,7 @@ class ArtistGenerator
       puts "Created artist #{a.name} and relevant paintings"
       if a.paintings.empty?
         a.destroy
+        puts "artist destroyed because he had no paintings"
       end
     # rescue
     #   puts "failed for #{@link}"

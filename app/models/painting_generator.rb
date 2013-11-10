@@ -47,7 +47,7 @@ class PaintingGenerator
     end
 
     def set_museum
-      @museum = Museum.find_or_create_by_name(@museum_name)
+      @museum = Museum.where{name =~ @museum_name}.first_or_create
     end
     #rails root is not in this file
     def process_image(page)

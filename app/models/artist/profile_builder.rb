@@ -1,13 +1,19 @@
 class Artist
   module ProfileBuilder
-
     def create_artist_paintings(page)
       page.css('.list_title a').each_with_index do |link, index|
+        attempts = 0
         begin
           painting_link = "http://www.the-athenaeum.org/art/#{link['href']}"
           PaintingGenerator.new(painting_link, self)
         rescue
-          "rescued http://www.the-athenaeum.org/art/#{link['href']}"
+          if attempts == 0
+            sleep 5
+            attempts += 1
+            retry
+          else 
+            puts "rescued http://www.the-athenaeum.org/art/#{link['href']}"
+          end
         end
       end
     end

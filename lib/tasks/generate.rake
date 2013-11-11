@@ -14,4 +14,14 @@ namespace :generate do
       ArtistWorker.perform_async(link['href'])
     end
   end
+
+  desc 'load by museum' 
+  task :all_museums => :environment do
+    page = Nokogiri::HTML(open('http://www.the-athenaeum.org/art/counts.php?s=ou&m=o'))
+    (page.css('.r1') + page.css('.r2')).each do |row|
+      href = row.css('td').first.css('a').first['href']
+      puts href
+      MuseumGenerator.new("http://www.the-athenaeum.org#{href}")
+    end
+  end
 end

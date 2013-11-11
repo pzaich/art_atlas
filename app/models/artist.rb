@@ -1,6 +1,5 @@
 class Artist < ActiveRecord::Base
   include PgSearch
-  include ProfileBuilder
 
 	attr_accessor :profile_url
   attr_accessible :name, :profile_url
@@ -20,8 +19,7 @@ class Artist < ActiveRecord::Base
   #sample artist profile http://www.the-athenaeum.org/people/detail.php?ID=4820
   def build_artist_profile
     page = Nokogiri::HTML(open(self.profile_url))
-    set_name(page)
-    @listing_page = Nokogiri::HTML(open("http://www.the-athenaeum.org#{page.css('#linkbar a')[3]['href']}"))
+    self.name = page.css('#title').text.chomp.strip
   end
 
   #sample url http://www.the-athenaeum.org/art/list.php?m=a&s=tu&aid=4820

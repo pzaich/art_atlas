@@ -3,13 +3,13 @@ require 'open-uri'
 class PaintingGenerator
   attr_reader :painting
   
-  def initialize(painting_url, artist)
+  def initialize(painting_url, museum)
     @painting_url = painting_url
     build_profile
     @painting = Painting.new(:name => @name,
-                    :museum => @museum, 
+                    :museum => museum, 
                     :image => @image,
-                    :artist => artist,
+                    :artist => @artist,
                     :athenaeum_id => set_athenaeum_id
                     )
     if @painting.save
@@ -25,7 +25,7 @@ class PaintingGenerator
       f = open(@painting_url)
       page = Nokogiri::HTML(f)
       set_name(page)
-      set_address(page)
+      set_artist(page)
       process_image(page)
       f.close
     end
@@ -38,18 +38,6 @@ class PaintingGenerator
       @name = page.css('#title').first.text
     end
 
-    def set_address(page)
-      raw_address = page.css('#generalInfo td')[1].text.chomp.strip
-      if (raw_address =~ /private collection|unknown/i).nil?
-        @museum_name = raw_address
-        set_museum
-      end     
-    end
-
-    def set_museum
-      @museum = Museum.where{name =~ @museum_name}.first_or_create
-    end
-    #rails root is not in this file
     def process_image(page)
       @location = "#{Rails.root}/tmp/#{@name}.jpg"
       save_image_to_tmp(page)
@@ -71,5 +59,10 @@ class PaintingGenerator
 
     def delete_image
       File.delete(@location)
+    end
+
+    def set_artist(page)
+      artist_name = page.css('.subtitle a').first.text.strip
+      @artist = Artist.where{name =~ artist_name}.first_or_create
     end
 end

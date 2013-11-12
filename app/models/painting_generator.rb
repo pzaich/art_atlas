@@ -6,18 +6,18 @@ class PaintingGenerator
   def initialize(painting_url, museum)
     @painting_url = painting_url
     build_profile
-    @painting = Painting.new(:name => @name,
-                    :museum => museum, 
-                    :image => @image,
-                    :artist => @artist,
-                    :athenaeum_id => set_athenaeum_id
-                    )
-    if @painting.save
-      puts "added painting #{painting.name}"
-    else
-      @painting.errors.each {|error, reason| puts "#{error} #{reason}"}
-    end
-    delete_image
+    # @painting = Painting.new(:name => @name,
+    #                 :museum => museum, 
+    #                 :image => @image,
+    #                 :artist => @artist,
+    #                 :athenaeum_id => set_athenaeum_id
+    #                 )
+    # if @painting.save
+    #   puts "added painting #{painting.name}"
+    # else
+    #   @painting.errors.each {|error, reason| puts "#{error} #{reason}"}
+    # end
+    # delete_image
   end
 
   private
@@ -63,6 +63,6 @@ class PaintingGenerator
 
     def set_artist(page)
       artist_name = page.css('.subtitle a').first.text.strip
-      @artist = Artist.where{name =~ artist_name}.first_or_create
+      @artist = Artist.where(name: artist_name).first_or_create
     end
 end

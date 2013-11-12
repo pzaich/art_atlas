@@ -1,4 +1,5 @@
 class MuseumGenerator
+  attr_reader :museum
   def initialize(museum_url)
     f = open(museum_url)
     @page = Nokogiri::HTML(f)
@@ -8,10 +9,7 @@ class MuseumGenerator
   end
 
   def load_museum
-    @museum = Museum.create(
-      name: set_name,
-      address: set_address
-    )
+    @museum = Museum.where(name: set_name).first_or_create(address: set_address)
   end
 
   def set_address
@@ -49,7 +47,8 @@ class MuseumGenerator
     (page.css('.r1') + page.css('.r2')).each do |row|
       painting_link = row.css('.list_title a').first['href']
       puts painting_link
-      PaintingWorker.perform_async painting_link, @museum.id
+      PaintingGenerator.new("http://www.the-athenaeum.org/art/#{painting_link}", @museum)
+      #PaintingWorker.perform_async painting_link, @museum.id
     end
   end
 end

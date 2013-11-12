@@ -11,6 +11,7 @@ class Painting < ActiveRecord::Base
     :convert_options => { :all => '-quality 75 -strip -interlace Line' }
   
   validates_presence_of :museum_id
+  validates :athenaeum_id, :uniqueness => true
   
   scope :mappable, where("museum_id is NOT NULL")
   pg_search_scope :search_by_artist, 

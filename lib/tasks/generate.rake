@@ -21,7 +21,10 @@ namespace :generate do
     (page.css('.r1') + page.css('.r2')).each do |row|
       href = row.css('td').first.css('a').first['href']
       puts href
-      MuseumGenerator.new("http://www.the-athenaeum.org#{href}")
+      begin
+        MuseumGenerator.new("http://www.the-athenaeum.org#{href}")
+      rescue
+      end
     end
   end
 end

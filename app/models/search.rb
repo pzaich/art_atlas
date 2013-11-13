@@ -5,14 +5,14 @@ class Search
     @location = location
     find_museums_by_artist_name
     filter_location
-    @museums = Museum.scoped.order('RANDOM()').limit(20) if query.blank? && location.blank?
+    @museums = Museum.order('RANDOM()').limit(20) if query.blank? && location.blank?
   end
 
   def find_museums_by_artist_name
     if !@query.blank?
       @museums = Museum.search_by_artist(@query)
     else
-      @museums = Museum.scoped
+      @museums = Museum
     end
   end
 

@@ -1,4 +1,5 @@
-%li{:class => "museum-#{museum.id}"}
-  %h5
-    = museum.name
-  = image_tag museum.paintings.first.image.url(:thumb), :width => 120, :height => 120
+- if museum.paintings.any?
+  %li{:class => "museum-#{museum.id}"}
+    %h5
+      = museum.name
+    = image_tag museum.paintings.first.image.url(:thumb), :width => 120, :height => 120

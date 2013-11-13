@@ -21,11 +21,11 @@ window.A = {
   loadMap : () ->
     this.updateMapDimensions()
     window.map = L.map('map-container').setView([51.505, -0.09], 3)
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'
-      maxZoom: 18
-    }).addTo(map)
-    #map.addLayer new L.StamenTileLayer('watercolor')
+    # L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    #   attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'
+    #   maxZoom: 18
+    # }).addTo(map)
+    map.addLayer new L.StamenTileLayer('toner-lite')
     $('#search-form').trigger('submit')
   loadMarkers : (museums) ->
     $('#museum-carousel').html('')

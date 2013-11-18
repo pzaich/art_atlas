@@ -2,9 +2,10 @@ $ ->
   A.loadMap()
   $(window).resize () ->
       A.updateMapDimensions()
-  $('#search-form').on 'ajax:beforeSend', () -> 
+  $('#search-form').on 'ajax:beforeSend', () ->
     $('.loading').removeClass('hide')
   $('#search-form').on 'ajax:success', (status, xhr) ->
+    A.updateUrl xhr.url, xhr.title 
     A.loadMarkers(xhr.museums)
     A.setMapCenter(xhr.museums)
     A.setMuseumListWidth()
@@ -32,6 +33,9 @@ window.A = {
         clickable : true
         id : museum.id
         title : museum.name
+        properties: {
+          dialogLink: museum.dialog_link
+        }
       })
       A.loadMarker(marker)
     this.markerLayer = L.featureGroup(this.markers)
@@ -43,7 +47,7 @@ window.A = {
     this.markers.push marker
     marker.on 'click', () ->
       A.carousel.setActive(marker)
-      console.log(this.options.title)
+      console.log(this.options.properties.dialogLink)
   clearMarkers : () ->
     map.removeLayer(this.markerLayer) if this.markerLayer != null
     this.markers = []      
@@ -59,6 +63,8 @@ window.A = {
       map.zoomOut()
   scrollToRelatedMarker: (museum) ->
     $(museum).data('markerID')
+  updateUrl : (url, title) ->
+    history.pushState window.reload, title, url
 }
 
 window.A.carousel = {

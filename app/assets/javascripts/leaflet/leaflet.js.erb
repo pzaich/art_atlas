@@ -3168,6 +3168,10 @@ L.Marker = L.Class.extend({
         this._icon.id = options.id;
       }
 
+      if (options.properties) {
+        this._icon.properties = options.properties;
+      }
+
       this._initInteraction();
       needOpacityUpdate = (this.options.opacity < 1);
 

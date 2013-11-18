@@ -15,18 +15,19 @@
     = render 'shared/flash', :flash => flash
     .hide.loading
       loading ...
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container-fluid
-          .row-fluid
-            .span2.logo-container
-              =link_to root_path, :class => "brand" do
-                ArtNearMe
-            .span10
-              = render 'shared/search_form'             
-    = yield
-    
-    = render 'shared/footer'
+    #full-map.blurred
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container-fluid
+            .row-fluid
+              .span2.logo-container
+                =link_to root_path, :class => "brand" do
+                  ArtNearMe
+              .span10
+                = render 'shared/search_form'             
+      = yield
+      = render 'shared/footer'
+    = render 'static/detail_overlay'
     /
       Javascripts
       \==================================================

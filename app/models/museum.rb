@@ -1,13 +1,18 @@
 class Museum < ActiveRecord::Base
   include PgSearch
 
-  attr_accessible :latitude, :longitude, :name, :address
+  attr_accessible :latitude, :longitude, :name, :address, :avatar
   geocoded_by :address_or_name
 
   validates :name, :uniqueness => true
 
   has_many :paintings
   has_many :artists, :through => :paintings , :uniq => true
+  has_attached_file :avatar, 
+    :styles => {:small => "x200", :thumb => "200x200#"},
+    :path => "museum/:attachment/:style/:id.:extension",
+    :convert_options => { :all => '-quality 75 -strip -interlace Line' }
+
   after_validation :geocode
 
   default_scope { where{ latitude != nil && longitude != nil }}

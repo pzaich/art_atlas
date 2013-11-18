@@ -16,4 +16,18 @@ namespace :update do
     end
     puts "#{count} museums geocoded"
   end
+
+  task :museum_thumbs => :environment do
+    Museum.find_each do |museum|
+      begin
+        if !museum.avatar.exists?
+          image = open(Google::Search::Image.new(query: museum.name).first.uri)
+          museum.update_attributes avatar: image
+          puts "saved image for #{museum.name}"
+          sleep 2
+        end
+      rescue
+      end
+    end
+  end
 end

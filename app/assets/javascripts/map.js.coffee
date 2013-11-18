@@ -31,10 +31,10 @@ window.A = {
     $.each museums, (index, museum) ->
       marker = L.marker([museum.latitude, museum.longitude], {
         clickable : true
-        id : museum.id
-        title : museum.name
         properties: {
           dialogLink: museum.dialog_link
+          id : museum.id
+          title : museum.name
         }
       })
       A.loadMarker(marker)

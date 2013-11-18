@@ -5,7 +5,6 @@ $ ->
   $('#search-form').on 'ajax:beforeSend', () -> 
     $('.loading').removeClass('hide')
   $('#search-form').on 'ajax:success', (status, xhr) ->
-    $('.loading').addClass('hide')
     A.loadMarkers(xhr.museums)
     A.setMapCenter(xhr.museums)
     A.setMuseumListWidth()
@@ -24,7 +23,7 @@ window.A = {
     this.updateMapDimensions()
     window.map = L.map('map-container').setView([51.505, -0.09], 3)
     map.addLayer new L.StamenTileLayer('toner-lite')
-    $('#search-form').trigger('submit')
+    $('#search-form').trigger('submit') 
   loadMarkers : (museums) ->
     $('#museum-carousel').html('')
     this.clearMarkers()
@@ -35,13 +34,16 @@ window.A = {
         title : museum.name
       })
       A.loadMarker(marker)
-      A.loadMuseum(museum)
-    this.markerLayer = L.layerGroup(this.markers)
+    this.markerLayer = L.featureGroup(this.markers)
     this.markerLayer.addTo(map)
+    $('.loading').addClass('hide')
+    $.each museums, (index, museum) ->
+      A.loadMuseum(museum)
   loadMarker : (marker) ->
     this.markers.push marker
     marker.on 'click', () ->
       A.carousel.setActive(marker)
+      console.log(this.options.title)
   clearMarkers : () ->
     map.removeLayer(this.markerLayer) if this.markerLayer != null
     this.markers = []      
@@ -53,12 +55,8 @@ window.A = {
         totalWidth += parseInt($(this).width(), 10)
     $('#museum-carousel').width(totalWidth)
   setMapCenter: (museums) ->
-    # bounds = $.map museums, (museum, i) -> 
-    #   return [museum.latitude, museum.longitude ]
-    # bounds = new L.LatLngBounds bounds
-    # map.fitBounds bounds
-    #need markerCluster group http://stackoverflow.com/questions/15206863/centering-map-on-array-of-markers-bounds-leaflet
-    #scroll to center http://stackoverflow.com/questions/12735303/how-to-change-the-map-center-in-leaflet
+    map.fitBounds this.markerLayer.getBounds(), ->
+      map.zoomOut()
   scrollToRelatedMarker: (museum) ->
     $(museum).data('markerID')
 }

@@ -72,7 +72,7 @@ window.A = {
   loadMuseumDialogue : (dialogueBody) ->
     $('#full-map').addClass('blurred')
     $('.overlay, .dialogue').show()
-    $('.dialogue-body').html(dialogueBody)
+    $('.dialogue-main').html(dialogueBody)
 }
 
 window.A.carousel = {

@@ -9,7 +9,8 @@ class MuseumsController < ApplicationController
 
   def show
     @museum = Museum.find params[:id]
-    @paintings = Museum.paintings(params[:query])
+    @artist = Artist.search_by_name(params[:query]).first
+    @paintings = @museum.paintings(params[:query])
   end
   
 end

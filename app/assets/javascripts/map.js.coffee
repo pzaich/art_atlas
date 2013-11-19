@@ -46,8 +46,12 @@ window.A = {
   loadMarker : (marker) ->
     this.markers.push marker
     marker.on 'click', () ->
+      $('.loading').removeClass('hide')
       A.carousel.setActive(marker)
-      console.log(this.options.properties.dialogLink)
+      $.ajax({
+        url: this.options.properties.dialogLink
+        dataType: 'script'
+      })
   clearMarkers : () ->
     map.removeLayer(this.markerLayer) if this.markerLayer != null
     this.markers = []      
@@ -65,6 +69,10 @@ window.A = {
     $(museum).data('markerID')
   updateUrl : (url, title) ->
     history.pushState window.reload, title, url
+  loadMuseumDialogue : (dialogueBody) ->
+    $('#full-map').addClass('blurred')
+    $('.overlay, .dialogue').show()
+    $('.dialogue-body').html(dialogueBody)
 }
 
 window.A.carousel = {

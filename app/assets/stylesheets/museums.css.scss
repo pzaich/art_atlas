@@ -1,18 +1,18 @@
 // Place all the styles related to the museums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 body {
   .overlay {
+    display: none;
     position: absolute;
     z-index: 10;
     width: 100%;
     height: 100%;
-    position: absolute;
     top: 0;
     background: rgba(255,255,255,0.4)
   }
   .dialogue {
+    display: none;
     box-sizing: border-box;
     -moz-border-box: border-box;
     position: absolute;
@@ -27,14 +27,38 @@ body {
       padding-top: 8px;
     }
     .dialogue-header {
-      padding: 0 40px;
+      box-sizing: border-box;
+      -moz-border-box: border-box;
+      padding: 0 20px;
       padding-top: 5px;
       border-bottom: 1px solid #ccc;
+    }
+    .dialogue-body {
+      box-sizing: border-box;
+      -moz-border-box: border-box;
+      padding: 5px 20px;
     }
   }
   #full-map {
     &.blurred {
       -webkit-filter: blur(6px);
     }
+  }
+
+  .thumbnails {
+    .span3 {
+      &.first {
+        margin-left: 0;
+      }
+    }
+  }
+  .painting-thumbnails {
+    margin-top: 10px;
+    .thumbnail {
+      margin-bottom: 20px;
+    }
+  }
+  .tooltip {
+    border-radius: 0 !important;
   }
 }

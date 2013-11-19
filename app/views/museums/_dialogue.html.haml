@@ -1,3 +1,17 @@
 .dialogue-header.clearfix
-  %h3.pull-left Museum name
-  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+  %h3.pull-left=@museum.name
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button", id: 'close-dialogue'} ×
+.dialogue-body.clearfix
+  .clearfix
+    %h5.pull-left
+      #{Museum.first.paintings.count} paintings
+      - if @artist
+        by #{@artist.name}
+    - if @artist
+      %h5.pull-right
+        = link_to 'See all', museum_path(@museum, query: params[:query]), remote: true
+  %ul.thumbnails.painting-thumbnails
+    - @museum.paintings.each_with_index do |painting, i|
+      .span3{class: "#{ 'first' if i % 4  ==0 }"}
+        .thumbnail{data: { toggle: 'tooltip', title: "<h5>#{painting.name}</h5>"  }}
+          = image_tag painting.image.url(:thumb)

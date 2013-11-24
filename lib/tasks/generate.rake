@@ -22,9 +22,11 @@ namespace :generate do
       href = row.css('td').first.css('a').first['href']
       puts href
       begin
+        sleep 1
         MuseumGenerator.new("http://www.the-athenaeum.org#{href}")
       rescue
       end
     end
   end
+
 end

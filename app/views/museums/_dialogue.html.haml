@@ -4,14 +4,14 @@
 .dialogue-body.clearfix
   .clearfix
     %h5.pull-left
-      #{Museum.first.paintings.count} paintings
+      #{pluralize @paintings.count, "paintings"}
       - if @artist
         by #{@artist.name}
-    - if @artist
-      %h5.pull-right
-        = link_to 'See all', museum_path(@museum, query: params[:query]), remote: true
+      - if @artist
+        %span.see-all
+          = link_to '(See all)', museum_path(@museum), remote: true
   %ul.thumbnails.painting-thumbnails
-    - @museum.paintings.each_with_index do |painting, i|
+    - @paintings.each_with_index do |painting, i|
       .span3{class: "#{ 'first' if i % 4  ==0 }"}
         .thumbnail{data: { toggle: 'tooltip', title: "<h5>#{painting.name}</h5>"  }}
           = image_tag painting.image.url(:thumb)

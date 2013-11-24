@@ -48,6 +48,7 @@ class MuseumGenerator
       painting_link = row.css('.list_title a').first['href']
       puts painting_link
       #PaintingGenerator.new("http://www.the-athenaeum.org/art/#{painting_link}", @museum)
+      sleep 1
       PaintingWorker.perform_async painting_link, @museum.id
     end
   end

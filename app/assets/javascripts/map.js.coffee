@@ -5,10 +5,16 @@ $ ->
   $('#search-form').on 'ajax:beforeSend', () ->
     $('.loading').removeClass('hide')
   $('#search-form').on 'ajax:success', (status, xhr) ->
-    A.updateUrl xhr.url, xhr.title 
-    A.loadMarkers(xhr.museums)
-    A.setMapCenter(xhr.museums)
-    A.setMuseumListWidth()
+    $('.alert').remove()
+    A.updateUrl xhr.url, xhr.title
+    if xhr.museums.length > 0
+      A.loadMarkers(xhr.museums)
+      A.setMapCenter(xhr.museums)
+      A.setMuseumListWidth()
+    else
+      A.clearMarkers()
+      $('.loading').addClass('hide')
+      $('body').prepend(xhr.flash_message)
     
   $('body').on 'click', '.museum-list > li', () ->
     A.scrollToRelatedMarker(this)

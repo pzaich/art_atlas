@@ -1,8 +1,8 @@
 ArtAtlas::Application.routes.draw do
-
-  root :to => 'static#home'
   resources :museums
-  get '/:query/:location', :to => 'static#home'
   resources :artists
+  root :to => 'static#home'
+  get 'location/:location', :to => 'static#home'
+  get '/:query/:location', :to => 'static#home'
   
 end

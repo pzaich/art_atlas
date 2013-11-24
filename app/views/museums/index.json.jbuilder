@@ -10,3 +10,5 @@ end
 json.total @museums.count
 json.url request.fullpath
 json.title museum_page_title(params)
+json.flash_message render 'shared/flash.html.haml', flash: flash
+

@@ -18,6 +18,10 @@ $ ->
   $('body').on 'click', '.museum-list > li, .zoom-to-marker', (e) ->
     e.preventDefault()
     A.scrollToRelatedMarker(this)
+  $('.btn-left').on 'click', () ->
+    A.carousel.scrollLeft()
+  $('.btn-right').on 'click', () ->
+    A.carousel.scrollRight()
 
 window.A = {
   markers : []
@@ -94,12 +98,18 @@ window.A.carousel = {
         totalWidth += parseInt($(this).outerWidth(), 10)
     $('#museum-carousel').width(totalWidth)
   scrollLeft : () ->
-    $(window)
-
+    offset = - $('#museum-carousel').position().left
+    width = $(window).width()
+    if offset > 0 && offset > width
+      $('#museum-carousel').css({left: -(offset - width)})
+    else
+      $('#museum-carousel').css({left: 0})
   scrollRight : () ->
-
-  scrollToActive : () ->
-
-
-
+    offset = - $('#museum-carousel').position().left
+    carouselWidth = $('#museum-carousel').width()
+    width = $(window).width()
+    if offset < carouselWidth
+      $('#museum-carousel').css({left: -(offset + width)})
+    else
+      $('#museum-carousel').css({left: 0})
 }

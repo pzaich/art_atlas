@@ -4,6 +4,7 @@ $ ->
       A.updateMapDimensions()
   $('#search-form').on 'ajax:beforeSend', () ->
     $('.loading').removeClass('hide')
+    $('.museum-list > li').remove()
   $('#search-form').on 'ajax:success', (status, xhr) ->
     $('.alert').remove()
     A.updateUrl xhr.url, xhr.title
@@ -13,8 +14,7 @@ $ ->
     else
       A.clearMarkers()
       $('.loading').addClass('hide')
-      $('body').prepend(xhr.flash_message)
-    
+      $('body').prepend(xhr.flash_message)  
   $('body').on 'click', '.museum-list > li, .zoom-to-marker', (e) ->
     e.preventDefault()
     A.scrollToRelatedMarker(this)
@@ -50,6 +50,7 @@ window.A = {
     $('.loading').addClass('hide')
     $.each museums, (index, museum) ->
       A.loadMuseum(museum)
+    A.carousel.setMuseumListWidth()
   loadMarker : (marker) ->
     this.markers.push marker
     marker.on 'click', () ->
@@ -90,11 +91,12 @@ window.A.carousel = {
   setMuseumListWidth: () ->
     totalWidth = 0
     $('#museum-carousel > li').each (index) ->
-        totalWidth += parseInt($(this).width(), 10)
+        totalWidth += parseInt($(this).outerWidth(), 10)
     $('#museum-carousel').width(totalWidth)
   scrollLeft : () ->
+    $(window)
 
-  scrollRight : () -> 
+  scrollRight : () ->
 
   scrollToActive : () ->
 

@@ -89,7 +89,7 @@ body {
     left: 50%;
     margin-left: -100px;
     width: 200px;
-    background: #fff;
+    background: #333;
     color: #4DA6FF;
     z-index: 1000;
     font-size: 18px;
@@ -108,9 +108,12 @@ body {
     overflow: hidden;
     background: #f4f4f4;
     .btn-affixed {
+      border-radius: 0;
       z-index: 200;
       position: absolute;
-      top: 60px;
+      top: 0;
+      height: 140px;
+      line-height: 140px;
     }
     .btn-right{
       right: 0;
@@ -119,14 +122,11 @@ body {
       left: 0;
     }
     .museum-list {
-      width: 3000px;
       margin: 0;
-      overflow-x: scroll;
-      overflow-y: hidden;
+      overflow: hidden;
       li {
         position: relative;
         width: 120px;
-        margin-left: 10px;
         padding: 5px 10px;
         float: left;
         h5 {
@@ -164,6 +164,16 @@ body {
               color: #eee;
               display: block;
               line-height: 69px;
+              &:hover {
+                background-color: #4d8eff;
+                background-image: -moz-linear-gradient(top, #4da6ff, #4d6bff);
+                background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4da6ff), to(#4d6bff));
+                background-image: -webkit-linear-gradient(top, #4da6ff, #4d6bff);
+                background-image: -o-linear-gradient(top, #4da6ff, #4d6bff);
+                background-image: linear-gradient(to bottom, #4da6ff, #4d6bff);
+                background-repeat: repeat-x;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4da6ff', endColorstr='#ff4d6bff', GradientType=0);
+              }
             }
           }
         }

@@ -119,10 +119,12 @@ body {
       left: 0;
     }
     .museum-list {
+      width: 3000px;
       margin: 0;
       overflow-x: scroll;
       overflow-y: hidden;
       li {
+        position: relative;
         width: 120px;
         margin-left: 10px;
         padding: 5px 10px;
@@ -136,6 +138,34 @@ body {
         &:hover,&.active  {
           background: #eee;
           box-shadow: inset 0 0 5px #aaa;
+        }
+        .museum-options {
+          display: none;
+        }
+        &:hover, &:active {
+          .museum-options {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            a {
+              &:first-child {
+                border-bottom: 1px solid #777;
+              }
+              &:last-child {
+                border-top: 1px solid #777;
+              }
+              i {
+                text-decoration: none;
+                font-size: 24px;
+              }
+              color: #eee;
+              display: block;
+              line-height: 69px;
+            }
+          }
         }
       }
     }

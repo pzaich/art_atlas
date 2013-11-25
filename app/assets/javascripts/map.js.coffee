@@ -10,13 +10,13 @@ $ ->
     if xhr.museums.length > 0
       A.loadMarkers(xhr.museums)
       A.setMapCenter(xhr.museums)
-      A.setMuseumListWidth()
     else
       A.clearMarkers()
       $('.loading').addClass('hide')
       $('body').prepend(xhr.flash_message)
     
-  $('body').on 'click', '.museum-list > li', () ->
+  $('body').on 'click', '.museum-list > li, .zoom-to-marker', (e) ->
+    e.preventDefault()
     A.scrollToRelatedMarker(this)
 
 window.A = {
@@ -37,6 +37,7 @@ window.A = {
     $.each museums, (index, museum) ->
       marker = L.marker([museum.latitude, museum.longitude], {
         clickable : true
+        title: museum.name
         properties: {
           dialogLink: museum.dialog_link
           id : museum.id
@@ -53,7 +54,7 @@ window.A = {
     this.markers.push marker
     marker.on 'click', () ->
       $('.loading').removeClass('hide')
-      A.carousel.setActive(marker)
+      A.carousel.setActive(this)
       $.ajax({
         url: this.options.properties.dialogLink
         dataType: 'script'
@@ -63,16 +64,17 @@ window.A = {
     this.markers = []      
   loadMuseum : (museum) ->
     $('#museum-carousel').append museum.infobox
-  setMuseumListWidth: () ->
-    totalWidth = 0
-    $('#museum-carousel > li').each (index) ->
-        totalWidth += parseInt($(this).width(), 10)
-    $('#museum-carousel').width(totalWidth)
   setMapCenter: (museums) ->
-    map.fitBounds this.markerLayer.getBounds(), ->
-      map.zoomOut()
+    map.fitBounds this.markerLayer.getBounds()
+    map.setZoom(14) if map.getZoom() > 14
   scrollToRelatedMarker: (museum) ->
-    $(museum).data('markerID')
+    $('.museum-list > li').removeClass('active')
+    $(museum).addClass('active')
+    museumId = $(museum).data('id')
+    $.each this.markers, (index, marker) ->
+      if marker.options.properties.id == museumId
+        map.panTo marker._latlng
+        map.setZoom(16)
   updateUrl : (url, title) ->
     history.pushState window.reload, title, url
   loadMuseumDialogue : (dialogueBody) ->
@@ -84,12 +86,18 @@ window.A = {
 window.A.carousel = {
   setActive : (marker) ->
     $('.museum-list > li').removeClass('active')
-    $('.museum-' + marker.options.id).addClass('active')
+    $('.museum-' + marker.options.properties.id).addClass('active')
+  setMuseumListWidth: () ->
+    totalWidth = 0
+    $('#museum-carousel > li').each (index) ->
+        totalWidth += parseInt($(this).width(), 10)
+    $('#museum-carousel').width(totalWidth)
   scrollLeft : () ->
 
   scrollRight : () -> 
 
   scrollToActive : () ->
+
 
 
 }

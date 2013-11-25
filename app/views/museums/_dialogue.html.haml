@@ -4,7 +4,7 @@
 .dialogue-body.clearfix
   .clearfix
     %h5.pull-left
-      #{pluralize @paintings.count, "paintings"}
+      #{pluralize @paintings.count, "painting"}
       - if @artist
         by #{@artist.name}
       - if @artist

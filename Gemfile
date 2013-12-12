@@ -32,7 +32,6 @@ group :assets do
 end
 
 group :development do
-  gem 'rubber'
 	gem 'haml-rails'
   gem 'quiet_assets'
 end
@@ -40,6 +39,7 @@ end
 gem 'jquery-rails'
 
 ## RUBBER specific gems
+gem 'rubber'
 gem 'unf'
 gem 'open4'
 gem 'gelf'

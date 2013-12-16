@@ -31,6 +31,7 @@ body {
         border-radius: 4px;
         padding: 6px;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         background: #fff;
         display: inline-block;
         line-height: 32px;
@@ -100,6 +101,7 @@ body {
   .sticky-carousel {
     position: fixed;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     padding: 0 50px 0 50px;
     width: 100%;
     bottom: 20px;
@@ -250,7 +252,7 @@ body {
 
 @media (max-width: 767px) {
   body {
-    padding: 0 10px;
+    padding: 0;
 
   }
   .gmaps4rails_map {
@@ -265,6 +267,9 @@ body {
       float:none;
     }
   }
+  .sticky-carousel {
+    display: none;
+  }
 
   .navbar {
     padding: 0 10px 0 10px;
@@ -272,7 +277,6 @@ body {
       font-size: 32px;
     }
     .btn-large {
-
       padding: 15px 19px;
     }
   }

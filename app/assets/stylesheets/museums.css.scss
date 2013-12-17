@@ -43,6 +43,7 @@ body {
     }
   }
   #full-map {
+    overflow:hidden;
     &.blurred {
       -webkit-filter: blur(6px);
     }

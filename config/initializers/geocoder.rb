@@ -1,4 +1,4 @@
 Geocoder.configure({
   lookup: :bing,
-  api_key: ENV['ART_NEAR_ME_BING_API_KEY']
+  api_key: 'AvJ0OqIzT2GwnWNbwWLuc3k1ol1mYi_jOyOh5ZGT-I8FoTJnm8hXy-pt9Qxq61YH'
 })

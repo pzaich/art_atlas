@@ -1,7 +1,9 @@
 .dialogue-header.clearfix
-  = image_tag @museum.avatar.url(:thumb), height: 50, width: 50, class: 'pull-left', style: 'margin-right: 10px'
-  %h3.pull-left=@museum.name
+
   %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button", id: 'close-dialogue'} ×
+  %h3
+    = image_tag @museum.avatar.url(:thumb), height: 40, width: 40, class: 'pull-left', style: 'margin-right: 10px'
+    =@museum.name
 .dialogue-body.clearfix
   .clearfix
     %h5.pull-left

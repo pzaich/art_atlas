@@ -26,9 +26,14 @@ $ ->
 window.A = {
   markers : []
   markerLayer : null
+  mapHeight : () ->
+    if $(window).width() < 768
+      $(window).height() - $('.navbar').height()
+    else
+      $(window).height() - $('.navbar').height() - 140
   updateMapDimensions : () ->
     $('#map-container')
-      .height($(window).height() - $('.navbar').height() - 140)
+      .height(A.mapHeight())
       .width($(window).width())
   loadMap : () ->
     this.updateMapDimensions()

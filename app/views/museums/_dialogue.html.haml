@@ -15,6 +15,6 @@
           = link_to '(See all)', museum_path(@museum), remote: true
   %ul.thumbnails.painting-thumbnails
     - @paintings.each_with_index do |painting, i|
-      .span3{class: "#{ 'first' if i % 4  ==0 }"}
+      %li.span3.painting-container{class: "#{ 'first' if i % 4  ==0 }"}
         .thumbnail{data: { toggle: 'tooltip', title: "<h5>#{painting.name}</h5>"  }}
           = image_tag painting.image.url(:thumb), class: 'painting-thumbnail'

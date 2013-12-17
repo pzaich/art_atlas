@@ -293,3 +293,18 @@ body {
     padding-left: 10px;
   }
 }
+
+@media (max-width: 767px) {
+  body {
+    .painting-thumbnails {
+      li {
+        &.painting-container {
+          float: left;
+          width: 50%;
+          padding: 10px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

@@ -253,7 +253,9 @@ body {
 @media (max-width: 767px) {
   body {
     padding: 0;
-
+    .navbar form .current-location {
+      top: 5px; 
+    }
   }
   .gmaps4rails_map {
     margin-left: -10px;
@@ -271,14 +273,23 @@ body {
     display: none;
   }
   .navbar {
+    padding: 0 10px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-    padding: 10px;
     .brand {
       font-size: 32px;
     }
     .btn-large {
       padding: 15px 19px;
     }
+  }
+  form {
+    .query-wrapper {
+      width: calc(100% - 90px);
+      width: webkit-calc(100% -90px);
+    }
+  }
+  .span10 {
+    padding-left: 10px;
   }
 }

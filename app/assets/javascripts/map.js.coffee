@@ -85,15 +85,13 @@ window.A = {
   loadMuseumDialogue : (dialogueBody) ->
     $('#full-map').addClass('blurred')
     $('.overlay, .dialogue').show()
-    $('.dialogue-main ').imagesLoaded () ->
-      console.log 'hello'
-      $('.loading').addClass('hide')
     $('.dialogue-main').html(dialogueBody)
+    imagesLoaded '.dialogue-main', () ->
+      $('.loading').addClass('hide')
     $('.painting-thumbnails .thumbnail').tooltip({
       html: true
       trigger : 'hover focus'
     });
-    
 }
 
 window.A.carousel = {

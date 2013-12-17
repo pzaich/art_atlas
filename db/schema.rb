@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131118041845) do
+ActiveRecord::Schema.define(:version => 20131217193101) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "artists", ["name"], :name => "index_artists_on_name"
 
   create_table "museums", :force => true do |t|
     t.string   "name"
@@ -31,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20131118041845) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
+
+  add_index "museums", ["latitude", "longitude"], :name => "index_museums_on_latitude_and_longitude"
 
   create_table "paintings", :force => true do |t|
     t.integer  "artist_id"
@@ -46,6 +50,9 @@ ActiveRecord::Schema.define(:version => 20131118041845) do
     t.integer  "athenaeum_id"
   end
 
+  add_index "paintings", ["artist_id"], :name => "index_paintings_on_artist_id"
   add_index "paintings", ["athenaeum_id"], :name => "index_paintings_on_athenaeum_id"
+  add_index "paintings", ["museum_id"], :name => "index_paintings_on_museum_id"
+  add_index "paintings", ["name"], :name => "index_paintings_on_name"
 
 end

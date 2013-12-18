@@ -40,7 +40,10 @@ window.A = {
   loadMap : () ->
     this.updateMapDimensions()
     window.map = L.map('map-container').setView([51.505, -0.09], 3)
-    map.addLayer new L.StamenTileLayer('toner-lite')
+    L.tileLayer('http://{s}.tiles.mapbox.com/v3/' + 'pzaich.gip3m4eo' + '/{z}/{x}/{y}.png', {
+          attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'
+          maxZoom: 18
+        }).addTo(map)
     $('#search-form').trigger('submit') 
   loadMarkers : (museums) ->
     $('#museum-carousel').html('')

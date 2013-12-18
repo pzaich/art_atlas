@@ -22,7 +22,8 @@ $ ->
     A.carousel.scrollLeft()
   $('.btn-right').on 'click', () ->
     A.carousel.scrollRight()
-  $('.view-museum').on 'click', () ->
+  $('body').on 'click','.view-museum', () ->
+    console.log('hello')
     $('.loading').removeClass('hide')
 
 window.A = {

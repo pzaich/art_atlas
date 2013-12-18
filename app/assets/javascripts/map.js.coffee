@@ -15,13 +15,15 @@ $ ->
       A.clearMarkers()
       $('.loading').addClass('hide')
       $('body').prepend(xhr.flash_message)  
-  $('body').on 'click', '.museum-list > li, .zoom-to-marker', (e) ->
+  $('body').on 'click', '.zoom-to-marker', (e) ->
     e.preventDefault()
-    A.scrollToRelatedMarker(this)
+    A.scrollToRelatedMarker($(this).closest('.museum-card'))
   $('.btn-left').on 'click', () ->
     A.carousel.scrollLeft()
   $('.btn-right').on 'click', () ->
     A.carousel.scrollRight()
+  $('.view-museum').on 'click', () ->
+    $('.loading').removeClass('hide')
 
 window.A = {
   markers : []
@@ -79,20 +81,20 @@ window.A = {
     map.setZoom(14) if map.getZoom() > 14
   scrollToRelatedMarker: (museum) ->
     $('.museum-list > li').removeClass('active')
-    $(museum).addClass('active')
-    museumId = $(museum).data('id')
+    museum.addClass('active')
+    museumId = museum.data('id')
     $.each this.markers, (index, marker) ->
       if marker.options.properties.id == museumId
-        map.panTo marker._latlng
-        map.setZoom(16)
+        map.setView marker._latlng, 16
   updateUrl : (url, title) ->
     history.pushState window.reload, title, url
-  loadMuseumDialogue : (dialogueBody) ->
+  loadMuseumDialogue : (dialogueBody, museum) ->
     $('#full-map').addClass('blurred')
     $('.overlay, .dialogue').show()
     $('.dialogue-main').html(dialogueBody)
     imagesLoaded '.dialogue-main', () ->
       $('.loading').addClass('hide')
+      A.scrollToRelatedMarker(museum);
     $('.painting-thumbnails .thumbnail').tooltip({
       html: true
       trigger : 'hover focus'

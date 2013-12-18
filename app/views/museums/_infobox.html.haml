@@ -1,10 +1,10 @@
 - if museum.paintings.any?
-  %li{:class => "museum-#{museum.id}", data: {id: museum.id} }
+  %li{:class => "museum-#{museum.id} museum-card", data: {id: museum.id} }
     %h5
       = museum.name
     = image_tag museum.avatar(:thumb), :width => 120, :height => 120
     .museum-options
-      = link_to museum_path(museum, query: params[:query]), remote: true do
+      = link_to museum_path(museum, query: params[:query]), remote: true, class: 'view-museum' do
         %i.icon-building
         View Museum
       = link_to '#', class: 'zoom-to-marker' do

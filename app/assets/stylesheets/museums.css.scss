@@ -22,9 +22,6 @@ body {
     top: 0;
     .close {
       line-height: 40px;
-      opacity: 0.8;
-      font-size: 30px;
-      padding-top: 8px;
     }
     .dialogue-header {
       box-sizing: border-box;
@@ -32,11 +29,32 @@ body {
       padding: 0 20px;
       padding-top: 5px;
       border-bottom: 1px solid #ccc;
+      position: fixed;
+      background: #fff;
+      width: 100%;
+      .close {
+        position: absolute;
+        top: 50%;
+        margin-top: -24px;
+        right: 20px;
+        font-size:40px;
+        opacity: 0.4;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      h3 {
+        padding-right: 40px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
     .dialogue-body {
       box-sizing: border-box;
       -moz-border-box: border-box;
       padding: 5px 20px;
+      padding-top: 86px;
     }
     .see-all {
       margin-left: 5px;

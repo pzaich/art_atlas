@@ -89,7 +89,7 @@ window.A = {
     museumId = museum.data('id')
     $.each this.markers, (index, marker) ->
       if marker.options.properties.id == museumId
-        map.setView marker._latlng, 16
+        map.setView marker._latlng, 13
   updateUrl : (url, title) ->
     history.pushState window.reload, title, url
   loadMuseumDialogue : (dialogueBody, museum) ->

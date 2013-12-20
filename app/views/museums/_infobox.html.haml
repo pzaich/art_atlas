@@ -4,9 +4,9 @@
       = museum.name
     = image_tag museum.avatar(:thumb), :width => 120, :height => 120
     .museum-options
+      %h5
+        = museum.name
       = link_to museum_path(museum, query: params[:query]), remote: true, class: 'view-museum' do
-        %i.icon-building
-        View Museum
-      = link_to '#', class: 'zoom-to-marker' do
         %i.icon-zoom-in
-        Zoom In
+      = link_to '#', class: 'zoom-to-marker' do
+        %i.icon-map-marker

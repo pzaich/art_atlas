@@ -6,3 +6,5 @@ $ ->
   $('body').on 'click', '#close-dialogue', -> 
     $('#full-map').removeClass('blurred')
     $('.overlay, .dialogue').hide()
+  $('body').on 'click', '.artist-specific', ->
+    $('.loading').removeClass('hide')

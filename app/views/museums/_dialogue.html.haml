@@ -4,16 +4,24 @@
     = image_tag @museum.avatar.url(:thumb), height: 40, width: 40, class: 'pull-left', style: 'margin-right: 10px'
     =@museum.name
 .dialogue-body.clearfix
-  .clearfix
-    %h5.pull-left
-      #{pluralize @paintings.count, "painting"}
-      - if @artist
-        by #{@artist.name}
-      - if @artist
-        %span.see-all
-          = link_to '(See all)', museum_path(@museum), remote: true
-  %ul.thumbnails.painting-thumbnails
-    - @paintings.each_with_index do |painting, i|
-      %li.span3.painting-container{class: "#{ 'first' if i % 4  ==0 }"}
-        .thumbnail{data: { toggle: 'tooltip', title: "<h5>#{painting.name}</h5>"  }}
-          = image_tag painting.image.url(:thumb), class: 'painting-thumbnail'
+  .row-fluid
+    .span3
+      %ul.nav.nav-tabs.nav-stacked
+        - if @artist
+          %li.active.featured-artist
+            = link_to @artist.name, museum_path(@museum, query: @artist.name) , remote: true, class: "artist-specific"
+        %li
+          = link_to museum_path(@museum) , remote: true, class: "artist-specific" do
+            All paintings
+            %span.label
+              = @museum.paintings.size
+        - @museum.artists.each do |artist|
+          -unless artist == @artist
+            %li
+              = link_to artist.name, museum_path(@museum, query: artist.name) , remote: true, class: "artist-specific"
+    .span9
+      %ul.thumbnails.painting-thumbnails
+        - @paintings.each_with_index do |painting, i|
+          %li.span3.painting-container{class: "#{ 'first' if i % 4  ==0 }"}
+            .thumbnail{data: { toggle: 'tooltip', title: "<h5>#{painting.name}</h5>"  }}
+              = image_tag painting.image.url(:thumb), class: 'painting-thumbnail'

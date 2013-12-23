@@ -32,6 +32,7 @@ body {
       position: fixed;
       background: #fff;
       width: 100%;
+      z-index: 100;
       .close {
         position: absolute;
         top: 50%;
@@ -72,7 +73,7 @@ body {
             }
             &.featured-artist {
               font-weight: 500;
-              
+
             }
           }
         }

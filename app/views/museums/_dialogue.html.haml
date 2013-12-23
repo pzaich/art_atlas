@@ -5,12 +5,12 @@
     =@museum.name
 .dialogue-body.clearfix
   .row-fluid
-    .span3
+    .span3.artist-list-container
       %ul.nav.nav-tabs.nav-stacked
         - if @artist
           %li.active.featured-artist
             = link_to @artist.name, museum_path(@museum, query: @artist.name) , remote: true, class: "artist-specific"
-        %li
+        %li{ class: "#{ 'active' if params[:query].blank?}"}
           = link_to museum_path(@museum) , remote: true, class: "artist-specific" do
             All paintings
             %span.label
@@ -19,7 +19,7 @@
           -unless artist == @artist
             %li
               = link_to artist.name, museum_path(@museum, query: artist.name) , remote: true, class: "artist-specific"
-    .span9
+    .span9.paintings-container
       %ul.thumbnails.painting-thumbnails
         - @paintings.each_with_index do |painting, i|
           %li.span3.painting-container{class: "#{ 'first' if i % 4  ==0 }"}

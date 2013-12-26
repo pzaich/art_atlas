@@ -28,7 +28,7 @@ class Search
   end
 
   def keep_or_expand_search
-    if @museums.size < 4 && @radius < 5000
+    if @location.present? && @museums.size < 4 && @radius < 5000
       @museums = Search.new(@query, @location, @radius * 2.5).museums
     end
   end

@@ -96,6 +96,7 @@ window.A = {
     $('#full-map').addClass('blurred')
     $('.overlay, .dialogue').show()
     $('.dialogue-main').html(dialogueBody)
+    $(window).scrollTop(0,0)
     imagesLoaded '.dialogue-main', () ->
       $('.loading').addClass('hide')
       A.scrollToRelatedMarker(museum);

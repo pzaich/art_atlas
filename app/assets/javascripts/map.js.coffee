@@ -81,6 +81,7 @@ window.A = {
     $('#museum-carousel').append museum.infobox
   setMapCenter: (museums) ->
     map.fitBounds this.markerLayer.getBounds()
+    map.setZoom(map.getZoom() - 1)
     map.setZoom(14) if map.getZoom() > 14
   scrollToRelatedMarker: (museum) ->
     $('.museum-list > li').removeClass('active')

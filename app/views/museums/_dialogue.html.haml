@@ -15,9 +15,11 @@
             All paintings
             %span.label
               = @museum.paintings.size
+        %li.visible-phone
+          = link_to 'Show other artists', '#', data: { alt_text: 'Hide other artists', toggled: false}, id: 'toggle-other-artists'
         - @museum.artists.each do |artist|
           -unless artist == @artist
-            %li
+            %li.hidden-phone.other-artist
               = link_to artist.name, museum_path(@museum, query: artist.name) , remote: true, class: "artist-specific"
     .span9.paintings-container
       %ul.thumbnails.painting-thumbnails
@@ -26,7 +28,7 @@
             .thumbnail{style: 'position:relative'}
               = image_tag painting.image.url(:thumb), class: 'painting-thumbnail'
               .overlay
-                %p=truncate(painting.name, length: 40)
+                %h4=truncate(painting.name, length: 60)
                 %hr.no-margin
                 %h5
                   %i.icon-user

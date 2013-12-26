@@ -100,10 +100,6 @@ window.A = {
     imagesLoaded '.dialogue-main', () ->
       $('.loading').addClass('hide')
       A.scrollToRelatedMarker(museum);
-    $('.painting-thumbnails .thumbnail').tooltip({
-      html: true
-      trigger : 'hover focus'
-    });
 }
 
 window.A.carousel = {

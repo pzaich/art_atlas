@@ -59,6 +59,11 @@ body {
     }
     
   }
+  hr {
+    &.no-margin {
+      margin: 0;
+    }
+  }
   .alert {
     margin: 0;
     border-radius: 0;
@@ -83,7 +88,6 @@ body {
   #map-container {
     width: 100%;
   }
-
   .loading {
     position: fixed;
     top: 80px;

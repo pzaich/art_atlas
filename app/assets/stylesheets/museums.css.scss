@@ -102,6 +102,20 @@ body {
   .painting-thumbnails {
     .thumbnail {
       margin-bottom: 20px;
+      &:hover, &:active, &:focus {
+        .overlay {
+          display: block;
+        }
+      }
+    }
+    .overlay {
+      text-align: center;
+      color: #eee;
+      background: rgba(0,0,0,0.75);
+      padding: 8px;
+      left: 0;
+      box-sizing: border-box;
+      -moz-border-box: border-box;
     }
   }
   .tooltip {

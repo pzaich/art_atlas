@@ -23,5 +23,11 @@
       %ul.thumbnails.painting-thumbnails
         - @paintings.each_with_index do |painting, i|
           %li.span3.painting-container{class: "#{ 'first' if i % 4  ==0 }"}
-            .thumbnail{data: { toggle: 'tooltip', title: "<h5>#{painting.name}</h5>"  }}
+            .thumbnail{style: 'position:relative'}
               = image_tag painting.image.url(:thumb), class: 'painting-thumbnail'
+              .overlay
+                %p=truncate(painting.name, length: 40)
+                %hr.no-margin
+                %h5
+                  %i.icon-user
+                  =painting.artist.name

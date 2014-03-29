@@ -1,0 +1,4 @@
+class ArtistsController < ApiController
+
+
+end

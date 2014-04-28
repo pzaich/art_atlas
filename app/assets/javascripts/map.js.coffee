@@ -1,20 +1,27 @@
+window.ANM = angular.module('ANM', ['ngResource'])
+
+
+
+
+
+
+
 $ ->
   A.loadMap()
   $(window).resize () ->
       A.updateMapDimensions()
-  $('#search-form').on 'ajax:beforeSend', () ->
-    $('.loading').removeClass('hide')
-    $('.museum-list > li').remove()
-  $('#search-form').on 'ajax:success', (status, xhr) ->
-    $('.alert').remove()
-    A.updateUrl xhr.url, xhr.title
-    if xhr.museums.length > 0
-      A.loadMarkers(xhr.museums)
-      A.setMapCenter(xhr.museums)
-    else
-      A.clearMarkers()
-      $('.loading').addClass('hide')
-      $('body').prepend(xhr.flash_message)  
+  # $('#search-form').on 'ajax:beforeSend', () ->
+  #   $('.loading').removeClass('hide')
+  #   $('.museum-list > li').remove()
+  # $('#search-form').on 'ajax:success', (status, xhr) ->
+  #   $('.alert').remove()
+  #   if xhr.museums.length > 0
+  #     A.loadMarkers(xhr.museums)
+  #     A.setMapCenter(xhr.museums)
+  #   else
+  #     A.clearMarkers()
+  #     $('.loading').addClass('hide')
+  #     $('body').prepend(xhr.flash_message)  
   $('body').on 'click', '.zoom-to-marker', (e) ->
     e.preventDefault()
     A.scrollToRelatedMarker($(this).closest('.museum-card'))
@@ -44,9 +51,8 @@ window.A = {
           attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'
           maxZoom: 18
         }).addTo(map)
-    $('#search-form').trigger('submit') 
+    #$('#search-form').trigger('submit') 
   loadMarkers : (museums) ->
-    $('#museum-carousel').html('')
     this.clearMarkers()
     $.each museums, (index, museum) ->
       marker = L.marker([museum.latitude, museum.longitude], {
@@ -62,9 +68,9 @@ window.A = {
     this.markerLayer = L.featureGroup(this.markers)
     this.markerLayer.addTo(map)
     $('.loading').addClass('hide')
-    $.each museums, (index, museum) ->
-      A.loadMuseum(museum)
-    A.carousel.setMuseumListWidth()
+    #$.each museums, (index, museum) ->
+      #A.loadMuseum(museum)
+    #A.carousel.setMuseumListWidth()
   loadMarker : (marker) ->
     this.markers.push marker
     marker.on 'click', () ->
@@ -90,8 +96,6 @@ window.A = {
     $.each this.markers, (index, marker) ->
       if marker.options.properties.id == museumId
         map.setView marker._latlng, 13
-  updateUrl : (url, title) ->
-    history.pushState window.reload, title, url
   loadMuseumDialogue : (dialogueBody, museum) ->
     $('#full-map').addClass('blurred')
     $('.overlay, .dialogue').show()

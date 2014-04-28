@@ -3,7 +3,7 @@ ArtAtlas::Application.routes.draw do
   resources :artists, only: [:index, :show]
   root :to => 'static#home'
   
-  namespace :api do
+  namespace :api, defaults: { format: :json} do
     resources :museums, only: [:index, :show]
     resources :artists, only: [:index]
   end

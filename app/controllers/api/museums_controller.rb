@@ -3,7 +3,6 @@ module Api
     def index
       @museums = Search.new(params[:query], params[:location]).museums
       flash[:notice] = "Sorry we couldn't find anything nearby that matches your search."
-      respond_with @museums
     end
 
     def show

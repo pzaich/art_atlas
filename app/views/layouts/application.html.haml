@@ -1,5 +1,5 @@
 !!! 5
-%html(lang="en")
+%html(lang="en"){'ng-app' => 'ANM'}
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
@@ -14,7 +14,7 @@
   %body
     .hide.loading
       loading ...
-    #full-map
+    #full-map{ 'ng-controller' => 'MuseumCtrl'}
       .navbar.navbar-fixed-top
         .navbar-inner
           .container-fluid

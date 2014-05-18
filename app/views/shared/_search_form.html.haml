@@ -1,8 +1,8 @@
-= form_tag api_museums_path, :class => 'form-inline', :id => "search-form", :method => 'get', 'ng-submit' => 'loadMuseums()'do
+%form.form-inline#search{ 'ng-submit' => 'loadMuseums()'  }
   .query-wrapper
-    = search_field_tag :query, params[:query], :placeholder => "artist", :class => "input-xlarge", :data => { :autocomplete_src => artists_path }, :autocomplete => 'off'
+    = search_field_tag :query, params[:query], :placeholder => "artist", :class => "input-xlarge", :data => { :autocomplete_src => artists_path }, :autocomplete => 'off', 'ng-model' => 'search.query'
     near
-    = search_field_tag :location, params[:location], :placeholder => "address, city, state, country", :class => "input-xlarge"
+    = search_field_tag :location, params[:location], :placeholder => "address, city, state, country", :class => "input-xlarge", 'ng-model' => 'search.location'
     = link_to root_path, :class => "btn btn-link current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use my current location"} do
       %i.icon-map-marker
   = button_tag :type => 'submit', :class => "btn btn-large btn-primary", :id => "query-submit" do

@@ -3,7 +3,7 @@
   = button_tag :class => 'btn btn-affixed btn-large btn-square btn-left' do
     %i.icon-chevron-left
   %ul.unstyled#museum-carousel.museum-list.clearfix
-    %li{:class => "museum-{{museum.id}} museum-card", data: {id: "{{museum.id}}"}, 'ng-repeat' => 'museum in museums' }
+    %li{:class => "museum-{{museum.id}} museum-card", 'ng-repeat' => 'museum in museums' }
       %h5 {{museum.name}}
       = image_tag nil, :width => 120, :height => 120, 'ng-src' => '{{museum.avatar_url}}'
       .museum-options
@@ -14,4 +14,3 @@
         /   %i.icon-map-marker
   = button_tag :class => 'btn btn-affixed btn-large btn-square btn-right' do
     %i.icon-chevron-right
-    

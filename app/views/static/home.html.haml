@@ -4,13 +4,10 @@
     %i.icon-chevron-left
   %ul.unstyled#museum-carousel.museum-list.clearfix
     %li{:class => "museum-{{museum.id}} museum-card", 'ng-repeat' => 'museum in museums' }
-      %h5 {{museum.name}}
-      = image_tag nil, :width => 120, :height => 120, 'ng-src' => '{{museum.avatar_url}}'
-      .museum-options
+      %a{ href: '{{museum.museum_url}}', 'ng-click' => 'loadMuseum(museum)', 'intercept-click' => true }
         %h5 {{museum.name}}
-        / = link_to museum_path(museum, query: params[:query]), remote: true, class: 'view-museum' do
-        /   %i.icon-zoom-in
-        / = link_to '#', class: 'zoom-to-marker' do
-        /   %i.icon-map-marker
+        = image_tag nil, :width => 120, :height => 120, 'ng-src' => '{{museum.avatar_url}}'
+        .museum-options
+          %h5 {{museum.name}}
   = button_tag :class => 'btn btn-affixed btn-large btn-square btn-right' do
     %i.icon-chevron-right

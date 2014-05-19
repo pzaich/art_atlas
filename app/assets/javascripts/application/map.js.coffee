@@ -1,4 +1,3 @@
-window.ANM = angular.module('ANM', ['ngResource'])
 
 
 
@@ -59,7 +58,7 @@ window.A = {
         clickable : true
         title: museum.name
         properties: {
-          dialogLink: museum.dialog_link
+          dialogLink: museum.museum_url
           id : museum.id
           title : museum.name
         }

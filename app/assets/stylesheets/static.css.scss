@@ -57,7 +57,7 @@ body {
     #query-submit {
       margin-top: -2px;
     }
-    
+
   }
   hr {
     &.no-margin {
@@ -131,7 +131,7 @@ body {
       position: relative;
       margin: 0;
       overflow: hidden;
-      li {
+      .museum-card {
         position: relative;
         width: 120px;
         padding: 5px 10px;
@@ -149,51 +149,6 @@ body {
         .museum-options {
           display: none;
         }
-        &:hover, &:active {
-          .museum-options {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.6);
-            h5 {
-              border-bottom: 1px solid #aaa;
-              box-sizing: border-box;
-              -moz-box-sizing: border-box;
-              color: #fff;
-              width: 100%;
-              padding: 0 4px 10px 4px;
-              margin-bottom: 0;
-            }
-            a {
-              &:first-child {
-                border-bottom: 1px solid #777;
-              }
-              &:last-child {
-                border-top: 1px solid #777;
-              }
-              i {
-                text-decoration: none;
-                font-size: 48px;
-                vertical-align: middle;
-              }
-              text-align: center;
-              color: #eee;
-              display: block;
-              width: 50%;
-              float:left;
-              line-height: 100px;
-              height: 100px;
-              box-sizing: border-box;
-              -moz-box-sizing: border-box;
-              &:hover {
-                color: #000;
-                background: rgba(255,255,255,0.9)
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -204,8 +159,8 @@ body {
   opacity: 1.0;
   border: 5px solid rgba(77,166,255, 1);
   border-radius: 3px;
-  margin-top: 8px; 
-  background: white; 
+  margin-top: 8px;
+  background: white;
   padding: 5px;
   box-shadow: 0 0 2px #ccc;
   &:before {
@@ -260,7 +215,7 @@ body {
         font-size: 24px;
       }
     }
-    
+
   }
 }
 
@@ -268,7 +223,7 @@ body {
   body {
     padding: 0;
     .navbar form .current-location {
-      top: 5px; 
+      top: 5px;
     }
   }
   .gmaps4rails_map {

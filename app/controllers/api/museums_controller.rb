@@ -8,7 +8,7 @@ module Api
     def show
       @museum = Museum.find params[:id]
       @artist = Artist.search_by_name(params[:query]).first
-      @paintings = @museum.paintings(params[:query])
+      @paintings = @museum.paintings(params[:query]).includes(:artist)
       respond_with @museum
     end
   end

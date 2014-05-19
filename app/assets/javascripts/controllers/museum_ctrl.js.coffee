@@ -5,3 +5,5 @@
   $scope.loadMuseums = ->
     $scope.museums = Museum.query $scope.search, (response) ->
       A.loadMarkers(response)
+  $scope.loadmuseum = -> (museum)
+

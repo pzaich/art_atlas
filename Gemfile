@@ -8,7 +8,6 @@ gem 'geocoder'
 gem 'nokogiri'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.3.4'
-gem 'activerecord-tableless'
 gem 'jbuilder'
 gem 'sidekiq'
 gem 'squeel'
@@ -25,9 +24,6 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem "twitter-bootstrap-rails"
   gem 'modernizr-rails'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  gem 'less-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 

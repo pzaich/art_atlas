@@ -21,7 +21,7 @@ $ ->
   #   else
   #     A.clearMarkers()
   #     $('.loading').addClass('hide')
-  #     $('body').prepend(xhr.flash_message)  
+  #     $('body').prepend(xhr.flash_message)
   $('body').on 'click', '.zoom-to-marker', (e) ->
     e.preventDefault()
     A.scrollToRelatedMarker($(this).closest('.museum-card'))
@@ -51,7 +51,7 @@ window.A = {
           attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'
           maxZoom: 18
         }).addTo(map)
-    #$('#search-form').trigger('submit') 
+    #$('#search-form').trigger('submit')
   loadMarkers : (museums) ->
     this.clearMarkers()
     $.each museums, (index, museum) ->
@@ -72,6 +72,7 @@ window.A = {
       #A.loadMuseum(museum)
     #A.carousel.setMuseumListWidth()
   loadMarker : (marker) ->
+    # TODO refactor leaflet to angular
     this.markers.push marker
     marker.on 'click', () ->
       $('.loading').removeClass('hide')
@@ -82,7 +83,7 @@ window.A = {
       })
   clearMarkers : () ->
     map.removeLayer(this.markerLayer) if this.markerLayer != null
-    this.markers = []      
+    this.markers = []
   loadMuseum : (museum) ->
     $('#museum-carousel').append museum.infobox
   setMapCenter: (museums) ->

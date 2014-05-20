@@ -19,11 +19,11 @@
         .navbar-inner
           .container-fluid
             .row-fluid
-              .span2.logo-container
+              .span2.logo-container.hidden-phone
                 =link_to root_path, :class => "brand" do
                   ArtNearMe
               .span10
-                = render 'shared/search_form'             
+                = render 'shared/search_form'
       = yield
       = render 'shared/footer'
     = render 'static/detail_overlay'

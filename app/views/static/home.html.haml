@@ -4,7 +4,7 @@
     %i.icon-chevron-left
   %ul.unstyled#museum-carousel.museum-list.clearfix
     %li{:class => "museum-{{museum.id}} museum-card", 'ng-repeat' => 'museum in museums' }
-      %a{ href: '{{museum.museum_url}}', 'ng-click' => 'loadMuseum(museum)', 'intercept-click' => true }
+      %a{ 'ng-href' => '{{museum.museum_url}}', 'intercept-click' => true, 'ng-click' => 'showMuseum(museum)' }
         %h5 {{museum.name}}
         = image_tag nil, :width => 120, :height => 120, 'ng-src' => '{{museum.avatar_url}}'
         .museum-options

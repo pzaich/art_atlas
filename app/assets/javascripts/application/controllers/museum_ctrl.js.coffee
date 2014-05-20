@@ -1,5 +1,7 @@
 ANM.controller 'MuseumCtrl', ($scope, Museum) ->
   $scope.activeMuseum = null
+  $scope.isActiveMuseum = ->
+    $scope.activeMuseum
 
   $scope.museums = Museum.query (museums) ->
     A.loadMarkers(museums)
@@ -11,4 +13,4 @@ ANM.controller 'MuseumCtrl', ($scope, Museum) ->
       A.setMapCenter(museums)
 
   $scope.showMuseum = (museum) ->
-    activeMuseum = Museum.get { id: museum.id }
+    $scope.activeMuseum = Museum.get { id: museum.id }

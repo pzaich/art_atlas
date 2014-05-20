@@ -11,10 +11,10 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
 
-  %body
+  %body{ 'ng-controller' => 'MuseumCtrl' }
     .hide.loading
       loading ...
-    #full-map{ 'ng-controller' => 'MuseumCtrl'}
+    #full-map
       .navbar.navbar-fixed-top
         .navbar-inner
           .container-fluid

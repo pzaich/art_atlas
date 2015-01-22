@@ -3,9 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('body').on 'click', '#close-dialogue', -> 
-    $('#full-map').removeClass('blurred')
-    $('.overlay, .dialogue').hide()
   $('body').on 'click', '.artist-specific', ->
     $('.loading').removeClass('hide')
   $('body').on 'click', '#toggle-other-artists', (e) ->

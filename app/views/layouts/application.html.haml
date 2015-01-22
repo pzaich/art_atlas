@@ -14,21 +14,16 @@
   %body{ 'ng-controller' => 'MuseumCtrl' }
     .hide.loading
       loading ...
-    #full-map
-      .navbar.navbar-fixed-top
-        .navbar-inner
-          .container-fluid
-            .row-fluid
-              .span2.logo-container.hidden-phone
-                =link_to root_path, :class => "brand" do
-                  ArtNearMe
-              .span10
-                = render 'shared/search_form'
-      = yield
-      = render 'shared/footer'
-    = render 'static/detail_overlay'
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          .row-fluid
+            .span2.logo-container.hidden-phone
+              =link_to root_path, :class => "brand" do
+                ArtNearMe
+            .span10
+              = render 'shared/search_form'
+    = yield
+    = render 'shared/footer'
+
     = javascript_include_tag "application"

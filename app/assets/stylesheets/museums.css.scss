@@ -79,16 +79,9 @@ body {
           }
         }
       }
-
     }
     .see-all {
       margin-left: 5px;
-    }
-  }
-  #full-map {
-    overflow:hidden;
-    &.blurred {
-      -webkit-filter: blur(6px);
     }
   }
 

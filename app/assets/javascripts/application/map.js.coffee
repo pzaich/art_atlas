@@ -70,8 +70,6 @@ window.A = {
       if marker.options.properties.id == museumId
         map.setView marker._latlng, 13
   loadMuseumDialogue : (dialogueBody, museum) ->
-    $('#full-map').addClass('blurred')
-    $('.overlay, .dialogue').show()
     $('.dialogue-main').html(dialogueBody)
     $(window).scrollTop(0,0)
     imagesLoaded '.dialogue-main', () ->

@@ -76,4 +76,6 @@ ArtAtlas::Application.configure do
 
     }
   }
+
+  config.assets.js_compressor = Sprockets::LazyCompressor.new { Uglifier.new(mangle: false)}
 end

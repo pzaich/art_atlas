@@ -15,10 +15,11 @@
 //= require angular
 //= require angular-animate
 //= require angular-resource
-//= require angular-route
+//= require angular-ui-router/angular-ui-router
+//= require angular-ui-bootstrap-bower/ui-bootstrap
+//= require angular-ui-bootstrap-bower/ui-bootstrap-tpls
 
-//= require twitter/bootstrap
-//= require master
+//= require app
 //= require_tree .
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

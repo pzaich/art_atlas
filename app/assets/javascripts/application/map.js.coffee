@@ -1,12 +1,12 @@
-$ ->
-  A.loadMap()
-  $(window).resize () ->
-      A.updateMapDimensions()
+# $ ->
+#   A.loadMap()
+#   $(window).resize () ->
+#       A.updateMapDimensions()
 
-  $('.btn-left').on 'click', () ->
-    A.carousel.scrollLeft()
-  $('.btn-right').on 'click', () ->
-    A.carousel.scrollRight()
+#   $('.btn-left').on 'click', () ->
+#     A.carousel.scrollLeft()
+#   $('.btn-right').on 'click', () ->
+#     A.carousel.scrollRight()
 
 window.A = {
   markers : []
@@ -22,6 +22,7 @@ window.A = {
       .width($(window).width())
   loadMap : () ->
     this.updateMapDimensions()
+    console.log $('#map-container')
     window.map = L.map('map-container').setView([51.505, -0.09], 3)
     L.tileLayer('http://{s}.tiles.mapbox.com/v3/' + 'pzaich.gip3m4eo' + '/{z}/{x}/{y}.png', {
           attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'

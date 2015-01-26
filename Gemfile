@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '3.2.15'
 
@@ -17,6 +18,8 @@ gem 'google-search'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'haml'
 gem 'angularjs-rails'
+gem 'rails-assets-angular-ui-router'
+gem 'rails-assets-angular-ui-bootstrap-bower'
 
 # Gems used only for assets and not required
 # in production environments by default.

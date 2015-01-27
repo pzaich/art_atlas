@@ -156,7 +156,7 @@ GEM
       bundler (~> 1.0)
       railties (= 3.2.15)
     rails-assets-angular (1.3.10)
-    rails-assets-angular-ui-bootstrap-bower (0.11.2)
+    rails-assets-angular-ui-bootstrap-bower (0.8.0)
       rails-assets-angular (>= 1)
     rails-assets-angular-ui-router (0.2.13)
       rails-assets-angular (>= 1.0.8)
@@ -258,7 +258,7 @@ DEPENDENCIES
   pg_search
   quiet_assets
   rails (= 3.2.15)
-  rails-assets-angular-ui-bootstrap-bower
+  rails-assets-angular-ui-bootstrap-bower (= 0.8.0)
   rails-assets-angular-ui-router
   rubber
   sass-rails (~> 3.2.3)

@@ -10,17 +10,15 @@ ANM.directive 'artMap', ($window) ->
       #     A.scrollToRelatedMarker(museum)
   link: (scope,element, attrs) ->
     mapHeight = () ->
-      if $(window).width() < 768
-        $(window).height() - $('.navbar').height()
-      else
-        $(window).height() - $('.navbar').height() - 140
-
+      $(window).height() - $('.navbar').height()
     updateMapDimensions = () ->
-      console.log element
-      element
-        .height(mapHeight())
-        .width($($window).width())
-
+      width = $($window).width()
+      element.height(mapHeight())
+      if width > 768
+        element
+          .width(width - 0.2 * width)
+      else
+        element.width(width)
     loadMap = () ->
       updateMapDimensions()
       map = L.map('map-container').setView([51.505, -0.09], 3)
@@ -69,8 +67,6 @@ ANM.directive 'artMap', ($window) ->
       map.setZoom(map.getZoom() - 1)
       map.setZoom(14) if map.getZoom() > 14
     scrollToRelatedMarker: (museum) ->
-      $('.museum-list > li').removeClass('active')
-      museum.addClass('active')
       museumId = museum.data('id')
       $.each this.markers, (index, marker) ->
         if marker.options.properties.id == museumId
@@ -81,6 +77,9 @@ ANM.directive 'artMap', ($window) ->
     markers = []
 
     loadMap()
+
+    $($window).resize () ->
+      updateMapDimensions()
 
 
 

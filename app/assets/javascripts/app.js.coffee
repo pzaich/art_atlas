@@ -6,7 +6,7 @@ window.ANM = angular.module('artNear.me', ['ngResource', 'ui.router', 'ui.bootst
     .state('home', {
       url: '/'
       templateUrl: '/static/home.html'
-      controller: 'MuseumCtrl'
+      controller: 'SearchCtrl'
     })
     .state('home.museum', {
       url: '/museums/:id'

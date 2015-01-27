@@ -42,7 +42,7 @@ ANM.directive 'artMap', ($window, $state) ->
       # TODO refactor leaflet to angular
       scope.markers.push marker
       marker.on 'click', () ->
-        $state.go('.museum', { id: this.options.properties.id})
+        $state.go('museum', { id: this.options.properties.id})
 
     clearMarkers = () ->
       scope.map.removeLayer(scope.markerLayer) if scope.markerLayer

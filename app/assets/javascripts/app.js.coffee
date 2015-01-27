@@ -8,7 +8,7 @@ window.ANM = angular.module('artNear.me', ['ngResource', 'ui.router', 'ui.bootst
       templateUrl: '/static/home.html'
       controller: 'SearchCtrl'
     })
-    .state('home.museum', {
+    .state('museum', {
       url: '/museums/:id'
       templateUrl: '/museums/show.html'
       controller: 'MuseumCtrl'

@@ -22,4 +22,5 @@ window.ANM = angular.module('artNear.me', ['ngResource', 'ui.router', 'ui.bootst
     return path.replace(/\/$/, "")  if "/" is path[path.length - 1]
     return path.replace("/?", "?")  if path.indexOf("/?") > 0
     false
-
+.run ($rootScope) ->
+  $rootScope.loading = false

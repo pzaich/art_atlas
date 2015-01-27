@@ -1,4 +1,4 @@
-.hide.loading
+.hide.loading(ng-show="loading")
   loading ...
 .navbar.navbar-fixed-top
   .navbar-inner
@@ -11,11 +11,12 @@
           = render 'shared/search_form'
 #map-container(art-map=true)
 .sticky-carousel
-  %ul.unstyled#museum-carousel.museum-list.clearfix
+  %ul.unstyled#museum-carousel.museum-list.clearfix{'ng-if' => "museums.length > 0"}
     %li{:class => "museum-{{museum.id}} museum-card", 'ng-repeat' => 'museum in museums' }
-      %a{ 'ng-href' => '{{museum.museum_url}}', 'intercept-click' => true, 'ng-click' => 'showMuseum(museum)' }
+      %a{ 'ui-sref' => '.museum({id: museum.id})' }
         = image_tag nil, :width => 60, :height => 60, 'ng-src' => '{{museum.avatar_url}}'
         .card-body
           %h5 {{museum.name}}
           .museum-options
             %h5 {{museum.name}}
+  %p{'ng-if' => "museums.length === 0 && !loading"} No results

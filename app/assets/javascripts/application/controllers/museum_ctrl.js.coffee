@@ -1,7 +1,11 @@
-ANM.controller 'MuseumCtrl', ($scope, Museum) ->
-  # $scope.activeMuseum = null
-  # $scope.isActiveMuseum = ->
-  #   $scope.activeMuseum
+ANM.controller 'MuseumCtrl', ($scope, $state, $rootScope, Museum, Painting) ->
+  $scope.getPaintings = (museum) ->
+    options =
+      museum_id: museum.id
+    options.query = $rootScope.search.query if $rootScope.search && $rootScope.search.query
 
-  # $scope.showMuseum = (museum) ->
-  #   $scope.activeMuseum = Museum.get { id: museum.id }
+    $scope.paintings = Painting.query options
+
+  Museum.get { id: $state.params.id }, (museum) ->
+    $scope.museum = museum
+    $scope.getPaintings museum

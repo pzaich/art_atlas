@@ -1,0 +1,10 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+$link-color: #4DA6FF;
+$link-color-hover: darken($linkColor, 14%);
+$navbar-background: #f8f8f8;
+
+$warning-text:             #B25900;
+$warning-background:       lighten($warning-text, 30%);
+$warning-border:           darken($warning-background, 10%);

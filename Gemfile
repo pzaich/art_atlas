@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'https://rails-assets.org'
 
-gem 'rails', '3.2.15'
+gem 'rails', '3.2.21'
 
 gem 'pg'
 gem 'pg_search'
@@ -13,6 +13,7 @@ gem 'jbuilder'
 gem 'sidekiq'
 gem 'squeel'
 gem 'google-search'
+gem 'kaminari'
 
 ## frontend
 gem 'coffee-rails', '~> 3.2.1'
@@ -25,9 +26,9 @@ gem 'rails-assets-angular-ui-bootstrap-bower', '0.8.0'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem "twitter-bootstrap-rails"
   gem 'modernizr-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'bootstrap-sass', '2.3.2.2'
 end
 
 group :development do

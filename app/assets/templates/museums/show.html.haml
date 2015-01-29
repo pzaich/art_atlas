@@ -1,4 +1,38 @@
-%h1 Test
-.overlay{ 'ng-hide' => '!isActiveMuseum()' }
-.dialogue{ 'ng-hide' => '!isActiveMuseum()' }
-  .row-fluid.dialogue-main
+.dialogue{ 'ng-hide' => '!museum' }
+  .row-fluid
+    %section.museum-cover{ style: 'background-image: url("{{museum.full_url}}")'}
+      %button.close{:type => "button", 'back' => true } ×
+    .dialogue-header.clearfix
+      %h3
+        %img{:width => 40, :height => 40, 'ng-src' => '{{museum.avatar_url}}'}
+        {{ museum.name}}
+    .dialogue-body.clearfix
+      .row-fluid
+        .span9.paintings-container
+          %ul.thumbnails.painting-thumbnails
+            %li.painting-container{'ng-repeat' => 'painting in paintings'}
+              .thumbnail{style: 'position:relative'}
+                %img{ 'ng-src' => '{{painting.full_image_url}}', alt: '{{painting.name}}'}
+                .overlay
+                  %h4 {{ painting.name }}
+                  %hr.no-margin
+                  %h5
+                    %i.icon-user
+                    {{ painting.artist.name }}
+      -# .row-fluid
+      -#   .span3.artist-list-container
+      -#     %ul.nav.nav-tabs.nav-stacked
+      -#       - if @artist
+      -#         %li.active.featured-artist
+      -#           = link_to @artist.name, museum_path(@museum, query: @artist.name) , remote: true, class: "artist-specific"
+      -#       %li{ class: "#{ 'active' if params[:query].blank?}"}
+      -#         = link_to museum_path(@museum) , remote: true, class: "artist-specific" do
+      -#           All paintings
+      -#           %span.label
+      -#             = @museum.paintings.size
+      -#       %li.visible-phone
+      -#         = link_to 'Show other artists', '#', data: { alt_text: 'Hide other artists', toggled: false}, id: 'toggle-other-artists'
+      -#       - @museum.artists.each do |artist|
+      -#         -unless artist == @artist
+      -#           %li.hidden-phone.other-artist
+      -#             = link_to artist.name, museum_path(@museum, query: artist.name) , remote: true, class: "artist-specific"

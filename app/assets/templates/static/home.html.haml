@@ -5,8 +5,8 @@
     .container-fluid
       .row-fluid
         .span2.logo-container.hidden-phone
-          =link_to root_path, :class => "brand" do
-            ArtNearMe
+          %a.brand{ 'ui-sref' => 'home', 'ng-click' => 'homeReset()'}
+            ArtNear.Me
         .span10
           = render 'shared/search_form'
 #map-container(art-map=true)

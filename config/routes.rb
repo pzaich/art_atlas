@@ -4,9 +4,9 @@ ArtAtlas::Application.routes.draw do
   root :to => 'static#home'
   namespace :api, defaults: { format: :json} do
     resources :museums, only: [:index, :show]
+    resources :paintings, only: [:index]
     resources :artists, only: [:index]
   end
-
 
   get '/*path', to: 'static#home'
 end

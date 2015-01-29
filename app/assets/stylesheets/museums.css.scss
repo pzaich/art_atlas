@@ -2,24 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-  .overlay {
-    // display: none;
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background: rgba(255,255,255,0.4)
+  .museum-cover {
+    background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)) center center;;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 300px;
+  }
+  .museum-thumbnail {
+
   }
   .dialogue {
     // display: none;
     box-sizing: border-box;
     -moz-border-box: border-box;
-    position: absolute;
     z-index: 100;
     width: 100%;
     height: 100%;
-    top: 0;
     .close {
       line-height: 40px;
     }
@@ -29,10 +28,11 @@ body {
       padding: 0 20px;
       padding-top: 5px;
       border-bottom: 1px solid #ccc;
-      position: fixed;
-      background: #fff;
+      position: absolute;
+      background: rgba(255,255,255, 0.3);
       width: 100%;
       z-index: 100;
+      top: 231px;
       .close {
         position: absolute;
         top: 50%;
@@ -101,15 +101,7 @@ body {
         }
       }
     }
-    .overlay {
-      text-align: center;
-      color: #eee;
-      background: rgba(0,0,0,0.75);
-      padding: 8px;
-      left: 0;
-      box-sizing: border-box;
-      -moz-border-box: border-box;
-    }
+
   }
   .tooltip {
     border-radius: 0 !important;

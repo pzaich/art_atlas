@@ -19,5 +19,6 @@
           %h5 {{museum.name}}
           .museum-options
             %h5 {{museum.name}}
-  %p{'ng-if' => "museums.length === 0 && !loading"} No results
+  %h5.text-center{'ng-if' => "museums.length === 0 && !loading"} No results
+  %h5.text-center{'ng-if' => "museums.length === 0 && loading"} loading ...
 %div{ 'ui-view' => true }

@@ -4,9 +4,6 @@
 body {
   .museum-cover {
     position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     height: 300px;
     .close {
       position: absolute;
@@ -15,7 +12,7 @@ body {
       right: 0;
       color: white;
       opacity: 0.6;
-      font-size: 24px;
+      font-size: 40px;
       &:hover {
         opacity: 0.8
       }
@@ -67,56 +64,19 @@ body {
       box-sizing: border-box;
       -moz-border-box: border-box;
       padding: 5px 20px;
-      padding-top: 86px;
-      .nav-tabs {
-        border-radius: 4px;
-        background: #fff;
-        li {
-          position: relative;
-          .label {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            margin-top: -10px;
-          }
-          &.active {
-            a {
-              background: #4DA6FF;
-              color: #fff;
-            }
-            &.featured-artist {
-              font-weight: 500;
-
-            }
-          }
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    .masonry-container {
+      margin: 0 auto;
+      .masonry-brick {
+        display: none !important;
+        margin-top: 10px;
+        &.loaded {
+          display: block !important;
         }
       }
     }
-    .see-all {
-      margin-left: 5px;
-    }
-  }
-
-  .thumbnails {
-    .span3 {
-      &.first {
-        margin-left: 0;
-      }
-    }
-  }
-  .painting-thumbnails {
-    .thumbnail {
-      margin-bottom: 20px;
-      &:hover, &:active, &:focus {
-        .overlay {
-          display: block;
-        }
-      }
-    }
-
-  }
-  .tooltip {
-    border-radius: 0 !important;
   }
 }
 

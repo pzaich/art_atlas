@@ -2,7 +2,10 @@ ANM.controller 'SearchCtrl', ($scope, $location, $rootScope, Museum) ->
   $scope.search =
     query: $location.search().query
   $scope.loadMuseums = ->
-    $scope.museums = Museum.query $scope.search
+    $scope.loading = true
+    Museum.query $scope.search, (museums) ->
+      $scope.museums = museums
+      $scope.loading = false;
     $location.search 'query', $scope.search.query if $scope.search.query
     $location.search 'location', $scope.search.location if $scope.search.location
     $scope.pushQuery()
@@ -15,4 +18,5 @@ ANM.controller 'SearchCtrl', ($scope, $location, $rootScope, Museum) ->
     $rootScope.search =
       query: $scope.search.query
 
+  $scope.museums = []
   $scope.loadMuseums()

@@ -9,7 +9,7 @@ ANM.directive 'artMap', ($window, $state) ->
       element.height(mapHeight())
       if width > 768
         element
-          .width(width - 0.2 * width)
+          .width(width - 0.3 * width)
       else
         element.width(width)
     loadMap = () ->

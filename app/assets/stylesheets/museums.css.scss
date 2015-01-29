@@ -3,10 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
   .museum-cover {
+    position: relative;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 300px;
+    .close {
+      position: absolute;
+      line-height: 40px;
+      padding: 10px 20px;
+      right: 0;
+      color: white;
+      opacity: 0.6;
+      font-size: 24px;
+      &:hover {
+        opacity: 0.8
+      }
+    }
   }
   .museum-thumbnail {
     position: absolute;
@@ -20,9 +33,6 @@ body {
     z-index: 100;
     width: 100%;
     height: 100%;
-    .close {
-      line-height: 40px;
-    }
     .dialogue-header {
       box-sizing: border-box;
       -moz-border-box: border-box;

@@ -21,6 +21,8 @@ gem 'haml'
 gem 'angularjs-rails'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-ui-bootstrap-bower', '0.8.0'
+gem 'rails-assets-jquery-bridget'
+gem 'rails-assets-angular-masonry', '0.11.0'
 
 # Gems used only for assets and not required
 # in production environments by default.

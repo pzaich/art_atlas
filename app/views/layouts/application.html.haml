@@ -16,5 +16,7 @@
     %div(ui-view=true)
       = yield
     = render 'shared/footer'
+    %script{:src => "//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"}
+    %script{:src => "//desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js"}
     = javascript_include_tag "application"
     = preload_ng_templates

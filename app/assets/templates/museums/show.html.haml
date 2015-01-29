@@ -2,24 +2,14 @@
   .row-fluid
     %section.museum-cover{ style: 'background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("{{museum.full_url}}") 0 -300px '}
       %button.close{:type => "button", 'back' => true } ×
-    .dialogue-header.clearfix
+    .dialogue-header.clearfix{ 'sticky-top' => true }
       %h3
         %img.img-circle.museum-thumbnail{:width => 100, :height => 100, 'ng-src' => '{{museum.avatar_url}}'}
         {{ museum.name}}
     .dialogue-body.clearfix
-      .row-fluid
-        .span9.paintings-container
-          %ul.thumbnails.painting-thumbnails
-            %li.painting-container{'ng-repeat' => 'painting in paintings'}
-              .thumbnail{style: 'position:relative'}
-                %img{ 'ng-src' => '{{painting.full_image_url}}', alt: '{{painting.name}}'}
-                .overlay
-                  %h4 {{ painting.name }}
-                  %hr.no-margin
-                  %h5
-                    %i.icon-user
-                    {{ painting.artist.name }}
-      -# .row-fluid
+      .row-fluid{ 'masonry' => true }
+        .masonry-brick{ 'ng-repeat' => 'painting in paintings' }
+          %img{'ng-src' => '{{painting.full_image_url}}', alt: '{{painting.name}}'}
       -#   .span3.artist-list-container
       -#     %ul.nav.nav-tabs.nav-stacked
       -#       - if @artist

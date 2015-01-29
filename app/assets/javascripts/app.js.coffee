@@ -1,4 +1,4 @@
-window.ANM = angular.module('artNear.me', ['ngResource', 'ui.router', 'ui.bootstrap'])
+window.ANM = angular.module('artNear.me', ['ngResource', 'ui.router', 'ui.bootstrap', 'wu.masonry'])
 
 # routes
 .config ($stateProvider, $urlRouterProvider, $locationProvider) ->

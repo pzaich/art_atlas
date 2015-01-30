@@ -1,4 +1,4 @@
-ANM.controller 'SearchCtrl', ($scope, $location, $rootScope, Museum) ->
+ANM.controller 'SearchCtrl', ($scope, $location, $rootScope, $state, Museum) ->
   $scope.search =
     query: $location.search().query
     location: $location.search().location
@@ -12,8 +12,7 @@ ANM.controller 'SearchCtrl', ($scope, $location, $rootScope, Museum) ->
     $scope.pushQuery()
 
   $scope.homeReset = ->
-    $state.go 'home', {},
-      reload: true
+    $state.go 'home', {}, reload: true
 
   $scope.pushQuery = () ->
     $rootScope.search =

@@ -12,14 +12,15 @@ ANM.directive 'artMap', ($window, $state) ->
           .width(width - 0.3 * width)
       else
         element.width(width)
-    loadMap = () ->
+    loadMap = (callback) ->
       updateMapDimensions()
       scope.map = L.map('map-container').setView([51.505, -0.09], 3)
-      L.tileLayer 'http://{s}.tiles.mapbox.com/v3/' + 'pzaich.gip3m4eo' + '/{z}/{x}/{y}.png'
+      layer = L.tileLayer 'http://{s}.tiles.mapbox.com/v3/' + 'pzaich.gip3m4eo' + '/{z}/{x}/{y}.png'
       ,
         attribution : '<a href="http://www.openstreetmap.org/">Open Street Maps</a>'
         maxZoom: 18
       .addTo(scope.map)
+      callback() if callback
     loadMarkers = (museums) ->
       clearMarkers()
       $.each museums, (index, museum) ->
@@ -44,6 +45,8 @@ ANM.directive 'artMap', ($window, $state) ->
       scope.map.removeLayer(scope.markerLayer) if scope.markerLayer
       scope.markers = []
     setMapCenter = () ->
+      console.log(scope.map)
+      console.log(scope.markerLayer)
       scope.map.fitBounds scope.markerLayer.getBounds()
       scope.map.setZoom(scope.map.getZoom() - 1)
       scope.map.setZoom(14) if scope.map.getZoom() > 14
@@ -60,8 +63,8 @@ ANM.directive 'artMap', ($window, $state) ->
 
     scope.$watchCollection 'museums'
     , (newMuseums) ->
-      loadMarkers newMuseums
-      setMapCenter()
+      if scope.markerLayer
+        loadMarkers newMuseums, setMapCenter()
     # scrollToRelatedMarker: (museum) ->
     #   museumId = museum.data('id')
     #   $.each scope.markers, (index, marker) ->

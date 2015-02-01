@@ -1,0 +1,274 @@
+// Place all the styles related to the static controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  .navbar {
+    position: static;
+    margin-bottom: 0px;
+    .brand {
+      font-size: 32px;
+      line-height: 32px;
+      &:hover {
+        color: #4da6ff;
+      }
+    }
+    .typeahead {
+      width: calc(100% - 10px);
+      width: webkit-calc(100% -10px);
+      *width: 95%;
+    }
+    form {
+      margin: 5px 0;
+      width: 100%;
+      .btn {margin-top: 0}
+      .query-wrapper {
+        position: relative;
+        width: calc(100% - 70px);
+        width: webkit-calc(100% -70px);
+        *width: 90%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 6px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        background: #fff;
+        display: inline-block;
+        line-height: 32px;
+        input[type="search"], input[type="text"] {
+          border: 0;
+          box-shadow: none;
+          font-size: 20px;
+          line-height: 26px;
+          width: calc(50% - 40px);
+          *width: 42%;
+        }
+      }
+      .current-location {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 32px;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+    }
+    #query-submit {
+      margin-top: -2px;
+    }
+
+  }
+  hr {
+    &.no-margin {
+      margin: 0;
+    }
+  }
+  .alert {
+    margin: 0;
+    border-radius: 0;
+    padding: 5px;
+    text-align: center;
+    p {
+      margin: 0;
+    }
+  }
+  .footer{
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f8f8f8;
+    text-align: center;
+    box-shadow: 0 -1px 10px rgba(0,0,0,.1);
+    p {
+      margin: 2px 0;
+    }
+  }
+  #map-container {
+    width: 100%;
+  }
+  .loading {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    background: #333;
+    color: #4DA6FF;
+    z-index: 1000;
+    font-size: 18px;
+    padding: 4px;
+    text-align: center;
+    border-radius:3px;
+  }
+  .sticky-carousel {
+    position: fixed;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 30%;
+    top: 57px;
+    right: 0;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 77px; // compensate for top set to match navbar
+    background: #f4f4f4;
+    overflow-y: scroll;
+    .museum-list {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      .museum-card {
+        position: relative;
+        padding: 5px 10px;
+        overflow: hidden;
+        border-left: 3px solid #f4f4f4;
+        min-height: 60px;
+        .card-body {
+          overflow: hidden;
+        }
+        img {
+          float: left;
+          padding-right: 10px;
+        }
+        h5 {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        &:hover,&.active  {
+          background: #eee;
+          box-shadow: inset 0 0 5px #aaa;
+          border-left: 3px solid #4DA6FF;
+        }
+        .museum-options {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.painting-info{
+  position:relative;
+  opacity: 1.0;
+  border: 5px solid rgba(77,166,255, 1);
+  border-radius: 3px;
+  margin-top: 8px;
+  background: white;
+  padding: 5px;
+  box-shadow: 0 0 2px #ccc;
+  &:before {
+    right: 13px;
+    left: auto;
+    position: absolute;
+    top: -16px;
+    display: inline-block;
+    border-right: 11px solid transparent;
+    border-bottom: 11px solid #ccc;
+    border-left: 11px solid transparent;
+    border-bottom-color: rgba(77,166,255, 1);
+    content: '';
+  }
+  &:after {
+    right: 15px;
+    left: auto;
+    position: absolute;
+    top: -9px;
+    display: inline-block;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #ffffff;
+    border-left: 9px solid transparent;
+    content: '';
+  }
+}
+
+.brand {
+  i {
+    font-size: 48px;
+  }
+}
+.leaflet-control-attribution {
+  display: none;
+}
+
+
+@media (max-width: 979px) {
+  .navbar-inner {
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+}
+
+@media (max-width: 979px) {
+  body {
+    .navbar {
+      .brand {
+        font-size: 24px;
+      }
+    }
+
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding: 0;
+    .navbar form .current-location {
+      top: 5px;
+    }
+  }
+  .gmaps4rails_map {
+    margin-left: -10px;
+  }
+  .logo-container {
+    text-align: center;
+    .brand {
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      float:none;
+    }
+  }
+  .sticky-carousel {
+    display: none;
+  }
+  .navbar {
+    padding: 0 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    .brand {
+      font-size: 32px;
+    }
+    .btn-large {
+      padding: 15px 19px;
+    }
+  }
+  form {
+    .query-wrapper {
+      width: calc(100% - 90px);
+      width: webkit-calc(100% -90px);
+    }
+  }
+  .span10 {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    .painting-thumbnails {
+      li {
+        &.painting-container {
+          float: left;
+          width: 50%;
+          padding: 10px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

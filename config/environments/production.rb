@@ -20,6 +20,9 @@ ArtAtlas::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  ## TODO CHECK IF ANGULAR needs this in production
+  #config.assets.js_compressor = Sprockets::LazyCompressor.new { Uglifier.new(mangle: false)}
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
@@ -73,4 +76,6 @@ ArtAtlas::Application.configure do
 
     }
   }
+
+  config.assets.js_compressor = Sprockets::LazyCompressor.new { Uglifier.new(mangle: false)}
 end

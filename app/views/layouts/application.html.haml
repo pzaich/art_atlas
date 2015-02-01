@@ -1,10 +1,11 @@
 !!! 5
-%html(lang="en")
+%html(lang="en"){'ng-app' => 'artNear.me'}
   %head
+    %base{:href => "/"}
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "ArtNearMe: Find world-class art near you"
+    %title= content_for?(:title) ? yield(:title) : "ArtNear.Me: Find world-class art near you"
     = csrf_meta_tags
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
@@ -12,23 +13,10 @@
     = stylesheet_link_tag "application", :media => "all"
 
   %body
-    .hide.loading
-      loading ...
-    #full-map
-      .navbar.navbar-fixed-top
-        .navbar-inner
-          .container-fluid
-            .row-fluid
-              .span2.logo-container
-                =link_to root_path, :class => "brand" do
-                  ArtNearMe
-              .span10
-                = render 'shared/search_form'             
+    %div(ui-view=true)
       = yield
-      = render 'shared/footer'
-    = render 'static/detail_overlay'
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
+    = render 'shared/footer'
+    %script{:src => "//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"}
+    %script{:src => "//desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js"}
     = javascript_include_tag "application"
+    = preload_ng_templates

@@ -1,0 +1,24 @@
+.hide.loading(ng-show="loading")
+  loading ...
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      .row-fluid
+        .span2.logo-container.hidden-phone
+          %a.brand{ 'ui-sref' => 'home', 'ng-click' => 'homeReset()'}
+            ArtNear.Me
+        .span10
+          = render 'shared/search_form'
+#map-container(art-map=true)
+.sticky-carousel
+  %ul.unstyled#museum-carousel.museum-list.clearfix{'ng-if' => "museums.length > 0"}
+    %li{:class => "museum-{{museum.id}} museum-card", 'ng-repeat' => 'museum in museums' }
+      %a{ 'ui-sref' => 'museum({id: museum.id})' }
+        = image_tag nil, :width => 60, :height => 60, 'ng-src' => '{{museum.avatar_url}}'
+        .card-body
+          %h5 {{museum.name}}
+          .museum-options
+            %h5 {{museum.name}}
+  %h5.text-center{'ng-if' => "museums.length === 0 && !loading"} No results
+  %h5.text-center{'ng-if' => "museums.length === 0 && loading"} loading ...
+%div{ 'ui-view' => true }

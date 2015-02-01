@@ -8,17 +8,17 @@ class Museum < ActiveRecord::Base
 
   has_many :paintings
   has_many :artists, :through => :paintings , :uniq => true
-  has_attached_file :avatar, 
+  has_attached_file :avatar,
     :styles => {:small => "x200", :thumb => "200x200#"},
     :path => "museum/:attachment/:style/:id.:extension",
-    :convert_options => { :all => '-quality 75 -strip -interlace Line' }
-
+    :convert_options => { :all => '-quality 75 -strip -interlace Line' },
+    :default_url => 'http://lorempixel.com/output/city-q-g-200-200-6.jpg'
   after_validation :geocode
 
   default_scope { where{ latitude != nil && longitude != nil }}
   scope :uncoded, -> {where{ latitude == nil && longitude == nil }}
 
-  pg_search_scope :search_by_artist, 
+  pg_search_scope :search_by_artist,
                   :associated_against => { :artists => :name},
                   :using => { :tsearch => {:dictionary => 'english'}}
 
@@ -39,4 +39,3 @@ class Museum < ActiveRecord::Base
   end
 
 end
-  

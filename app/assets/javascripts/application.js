@@ -11,8 +11,24 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
-//= require twitter/bootstrap
+//= require jquery-bridget/jquery.bridget
+//= require get-style-property/get-style-property
+//= require get-size/get-size
+//= require matches-selector/matches-selector
+//= require doc-ready/doc-ready
+//= require outlayer
+//= require imagesloaded/imagesloaded
+//= require masonry
+//= require angular
+//= require angular-animate
+//= require angular-resource
+//= require angular-ui-router/angular-ui-router
+//= require angular-ui-bootstrap-bower/ui-bootstrap
+//= require angular-ui-bootstrap-bower/ui-bootstrap-tpls
+//= require angular-masonry/angular-masonry
+
+
+//= require app
 //= require_tree .
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

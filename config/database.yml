@@ -16,6 +16,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: art_atlas_development
+  host: localhost
   pool: 5
 
 
@@ -49,5 +50,5 @@ production:
   encoding: unicode
   database: art_atlas_production
   pool: 5
-  username: art_atlas
+  username: paulzaich
   password:

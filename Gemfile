@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-source 'https://rails-assets.org'
+source 'http://rails-assets.org'
 
 gem 'rails', '3.2.21'
 
@@ -39,14 +39,6 @@ group :development do
 end
 
 gem 'jquery-rails'
-
-## RUBBER specific gems
-gem 'rubber'
-gem 'unf'
-gem 'open4'
-gem 'gelf'
-gem 'graylog2_exceptions', :git => 'git://github.com/wr0ngway/graylog2_exceptions.git'
-gem 'graylog2-resque'
 
 ##NewRelic
 gem 'newrelic_rpm'

@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-source 'https://rails-assets.org'
+source 'http://rails-assets.org'
 
 gem 'rails', '3.2.21'
 
@@ -19,6 +19,7 @@ gem 'kaminari'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'haml'
 gem 'angularjs-rails'
+gem 'jquery-rails'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-ui-bootstrap-bower', '0.8.0'
 gem 'rails-assets-jquery-bridget'
@@ -38,15 +39,10 @@ group :development do
   gem 'quiet_assets'
 end
 
-gem 'jquery-rails'
+# Production Deploy
+gem 'capistrano', '2.15.5'
+gem 'unicorn'
 
-## RUBBER specific gems
-gem 'rubber'
-gem 'unf'
-gem 'open4'
-gem 'gelf'
-gem 'graylog2_exceptions', :git => 'git://github.com/wr0ngway/graylog2_exceptions.git'
-gem 'graylog2-resque'
 
 ##NewRelic
 gem 'newrelic_rpm'

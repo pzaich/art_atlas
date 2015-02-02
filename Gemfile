@@ -19,7 +19,6 @@ gem 'kaminari'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'haml'
 gem 'angularjs-rails'
-gem 'jquery-rails'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-ui-bootstrap-bower', '0.8.0'
 gem 'rails-assets-jquery-bridget'
@@ -43,6 +42,7 @@ end
 gem 'capistrano', '2.15.5'
 gem 'unicorn'
 
+gem 'jquery-rails'
 
 ##NewRelic
 gem 'newrelic_rpm'

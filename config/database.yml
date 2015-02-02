@@ -48,7 +48,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: art_atlas_production
+  database: artnearme_production
   pool: 5
-  username: paulzaich
+  username: artnearme
   password:

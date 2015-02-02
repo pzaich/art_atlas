@@ -62,7 +62,7 @@ ANM.directive 'artMap', ($window, $state) ->
 
     scope.$watchCollection 'museums'
     , (newMuseums) ->
-      loadMarkers newMuseums, setMapCenter()
+      loadMarkers newMuseums, setMapCenter
     # scrollToRelatedMarker: (museum) ->
     #   museumId = museum.data('id')
     #   $.each scope.markers, (index, marker) ->

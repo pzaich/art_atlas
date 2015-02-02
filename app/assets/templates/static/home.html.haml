@@ -10,19 +10,19 @@
         .span10
           %form.form-inline#search{ 'ng-submit' => 'loadMuseums()'  }
             .query-wrapper
-              = search_field_tag :query,'', :placeholder => "artist", :class => "input-xlarge", :autocomplete => 'off', 'ng-model' => 'search.query'
+              %input{name: 'query', type: 'search', :placeholder => "artist", :class => "input-xlarge", :autocomplete => 'off', 'ng-model' => 'search.query'}
               near
-              = search_field_tag :location,'', :placeholder => "address, city, state, country", :class => "input-xlarge", 'ng-model' => 'search.location'
+              %input{name: 'location', type: 'search', :placeholder => "address, city, state, country", :class => "input-xlarge", 'ng-model' => 'search.location'}
               -# = link_to root_path, :class => "btn btn-link current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use my current location"} do
               -#   %i.icon-map-marker
-            = button_tag :type => 'submit', :class => "btn btn-large btn-primary", :id => "query-submit" do
+            %button{ :type => 'submit', :class => "btn btn-large btn-primary", :id => "query-submit"}
               %i.icon-search
 #map-container(art-map=true)
 .sticky-carousel
   %ul.unstyled#museum-carousel.museum-list.clearfix{'ng-if' => "museums.length > 0"}
     %li{:class => "museum-{{museum.id}} museum-card", 'ng-repeat' => 'museum in museums' }
       %a{ 'ui-sref' => 'museum({id: museum.id})' }
-        = image_tag nil, :width => 60, :height => 60, 'ng-src' => '{{museum.avatar_url}}'
+        %img{ :width => 60, :height => 60, 'ng-src' => '{{museum.avatar_url}}' }
         .card-body
           %h5 {{museum.name}}
           .museum-options

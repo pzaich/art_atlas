@@ -16,7 +16,7 @@ class MuseumGenerator
     @page.search('br').each do |n|
       n.replace("\n")
     end
-    raw_address = @page.css('#map_canvas').first.parent.parent.next_sibling.child.text
+    raw_address = @page.css('#map_canvas').first.parent.parent.next_sibling.text
     raw_address.split("\n")[1..-1].join.strip if !raw_address.blank?
   end
 

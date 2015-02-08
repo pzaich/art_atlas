@@ -3,33 +3,42 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
   .museum-cover {
+    overflow: hidden;
     position: relative;
-    height: 300px;
-    .close {
-      position: absolute;
-      line-height: 40px;
-      padding: 10px 20px;
-      right: 0;
+    height: 200px;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }
+
+  .close {
+    color: white;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size:40px;
+    opacity: 0.4;
+    &:hover {
       color: white;
-      opacity: 0.6;
-      font-size: 40px;
-      &:hover {
-        opacity: 0.8
-      }
+      opacity: 0.8;
     }
   }
   .museum-thumbnail {
     position: absolute;
-    margin-left: -120px;
-    margin-top: -60px;
+    margin-top: -100px;
+    left: 50%;
+    margin-left: -50px;
   }
   .dialogue {
-    // display: none;
     box-sizing: border-box;
     -moz-border-box: border-box;
     z-index: 100;
     width: 100%;
     height: 100%;
+    color: white;
     .dialogue-header {
       box-sizing: border-box;
       -moz-border-box: border-box;
@@ -37,21 +46,10 @@ body {
       padding-top: 5px;
       border-bottom: 1px solid #ccc;
       position: absolute;
-      background: rgba(255,255,255, 0.6);
       width: 100%;
       z-index: 100;
-      top: 234px;
-      .close {
-        position: absolute;
-        top: 50%;
-        margin-top: -24px;
-        right: 20px;
-        font-size:40px;
-        opacity: 0.4;
-        &:hover {
-          opacity: 0.8;
-        }
-      }
+      top: 134px;
+      text-align: center;
       h3 {
         padding-left: 120px;
         padding-right: 40px;
@@ -84,11 +82,6 @@ body {
   body {
     .museum-cover {
       height: 200px;
-    }
-    .museum-thumbnail {
-      margin-top: -100px;
-      left: 50%;
-      margin-left: -50px;
     }
     .dialogue {
       .dialogue-header {

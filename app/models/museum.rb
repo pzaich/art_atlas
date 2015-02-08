@@ -9,7 +9,7 @@ class Museum < ActiveRecord::Base
   has_many :paintings
   has_many :artists, :through => :paintings , :uniq => true
   has_attached_file :avatar,
-    :styles => {:small => "x200", :thumb => "200x200#"},
+    :styles => {:thumb => "200x200#", large: '1600x'},
     :path => "museum/:attachment/:style/:id.:extension",
     :convert_options => { :all => '-quality 75 -strip -interlace Line' },
     :default_url => '/assets/museum_blank.png'

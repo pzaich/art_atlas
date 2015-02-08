@@ -2,15 +2,16 @@ require 'open-uri'
 
 class PaintingGenerator
   attr_reader :painting
-  
+
+  # painting_url will be a relative path for athenaeum
   def initialize(painting_url, museum)
-    @painting_url = painting_url
+    @painting_url = "http://www.the-athenaeum.org/art/#{painting_url}"
     build_profile
     @painting = Painting.new(:name => @name,
-                    :museum => museum, 
+                    :museum => museum,
                     :image => @image,
                     :artist => @artist,
-                    :athenaeum_id => set_athenaeum_id
+                    :athenaeum_id => athenaeum_id
                     )
     if @painting.save
       puts "added painting #{painting.name}"
@@ -30,8 +31,8 @@ class PaintingGenerator
       f.close
     end
 
-    def set_athenaeum_id
-      @painting_url.slice! /\d{2,10}$/
+    def athenaeum_id
+      @athenaeum_id ||= @painting_url.slice!(/\d{2,10}$/)
     end
 
     def set_name(page)
@@ -45,7 +46,13 @@ class PaintingGenerator
     end
 
     def save_image_to_tmp(page)
-      img_src = page.css('#imgTextHolder img').first['src']
+      f = open("http://www.the-athenaeum.org/art/full.php?ID=#{athenaeum_id}")
+      full_image_page = Nokogiri::HTML(f)
+
+      # puts full_image_page.css('#fullimg').inspect
+      img_src = full_image_page.css('#fullimg').first['src']
+      puts img_src
+
       File.open(@location , 'wb') do |saved_file|
         open("http://www.the-athenaeum.org/art/#{img_src}", 'rb') do |read_file|
           saved_file.write(read_file.read)

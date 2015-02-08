@@ -4,6 +4,6 @@ class PaintingWorker
 
   def perform(painting_link, museum_id)
     museum = Museum.find(museum_id)
-    PaintingGenerator.new("http://www.the-athenaeum.org/art/#{painting_link}", museum)
+    PaintingGenerator.new(painting_link, museum)
   end
 end

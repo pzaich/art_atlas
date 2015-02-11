@@ -16,7 +16,7 @@
               -# = link_to root_path, :class => "btn btn-link current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use my current location"} do
               -#   %i.icon-map-marker
             %button{ :type => 'submit', :class => "btn btn-large btn-primary", :id => "query-submit"}
-              %i.icon-search
+              %span.fa.fa-search
 #map-container(art-map=true)
 .sticky-carousel
   %ul.unstyled#museum-carousel.museum-list.clearfix{'ng-if' => "museums.length > 0"}

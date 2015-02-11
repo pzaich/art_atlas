@@ -18,17 +18,24 @@ namespace :generate do
   desc 'load by museum'
   task :all_museums => :environment do
     page = Nokogiri::HTML(open('http://www.the-athenaeum.org/art/counts.php?s=ou&m=o'))
-    (page.css('.r1') + page.css('.r2')).each do |row|
-      href = row.css('td').first.css('a').first['href']
-      puts href
-      count = 1
-      # begin
-        sleep 1
-        MuseumGenerator.new("http://www.the-athenaeum.org#{href}")
-      # rescue
-      #   count += 1
-      #   retry if count < 3
-      # end
+    # (page.css('.r2') + page.css('.r1'))
+    (page.css('.r2')).each do |row|
+      link = row.css('td').first.css('a').first
+      href = link['href']
+      if link.text > 'The Barnes Foundation'
+        puts href
+        puts "scrape #{link.text}"
+        count = 1
+        begin
+          sleep 1
+          MuseumGenerator.new("http://www.the-athenaeum.org#{href}")
+        rescue
+          count += 1
+          retry if count < 3
+        end
+      else
+        puts "Skip #{link.text}"
+      end
     end
   end
 

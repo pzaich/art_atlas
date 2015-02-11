@@ -1,5 +1,5 @@
-:verbose: false
-:concurrency:  25
+:verbose: true
+:concurrency:  40
 :queues:
   - [high, 7]
   - [default, 5]

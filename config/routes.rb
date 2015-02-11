@@ -8,5 +8,10 @@ ArtAtlas::Application.routes.draw do
     resources :artists, only: [:index]
   end
 
+  namespace :admin do
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   get '/*path', to: 'static#home'
 end

@@ -11,6 +11,8 @@ gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'jbuilder'
 gem 'sidekiq'
+gem 'sinatra', :require => false
+gem 'slim'
 gem 'squeel'
 gem 'google-search'
 gem 'kaminari'

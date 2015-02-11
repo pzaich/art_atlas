@@ -8,3 +8,6 @@ $navbar-background: #f8f8f8;
 $warning-text:             #B25900;
 $warning-background:       lighten($warning-text, 30%);
 $warning-border:           darken($warning-background, 10%);
+
+@import "font-awesome-sprockets";
+@import "font-awesome";

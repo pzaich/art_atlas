@@ -33,6 +33,7 @@ group :assets do
   gem 'modernizr-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '2.3.2.2'
+  gem 'font-awesome-sass'
 end
 
 group :development do

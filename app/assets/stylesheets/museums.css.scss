@@ -22,12 +22,19 @@ body {
     padding: 10px 20px;
     position: absolute;
     top: 0;
-    right: 20px;
+    left: 20px;
     font-size:40px;
-    opacity: 0.4;
+    opacity: 0.6;
+    .back-text {
+      font-size: 14px;
+      font-weight: normal;
+      text-shadow: none;
+      position: relative;
+      top: -7px;
+    }
     &:hover {
       color: white;
-      opacity: 0.8;
+      opacity: 1;
     }
   }
   .museum-thumbnail {

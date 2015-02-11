@@ -19,7 +19,7 @@ namespace :update do
 
   task :museum_thumbs => :environment do
     Museum.unscoped.find_each do |museum|
-      MuseumThumbGenerator.new(museum)
+      MuseumThumbWorker.perform_async(museum.id)
     end
   end
 end

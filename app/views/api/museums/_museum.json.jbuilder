@@ -5,5 +5,5 @@ json.cache! museum do
   json.longitude museum.longitude
   json.address museum.address
   json.avatar_url museum.avatar.url(:thumb)
-  json.full_url museum.avatar.url(:original)
+  json.full_url museum.avatar.url(:large)
 end

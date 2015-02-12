@@ -16,6 +16,7 @@
     %div(ui-view=true)
       = yield
     = render 'shared/footer'
+    %script{:src => '//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false' }
     %script{:src => "//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"}
     %script{:src => "//desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js"}
     = javascript_include_tag "application"

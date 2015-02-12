@@ -1,22 +1,23 @@
 .hide.loading(ng-show="loading")
   loading ...
-.navbar.navbar-fixed-top
-  .navbar-inner
-    .container-fluid
-      .row-fluid
-        .span2.logo-container.hidden-phone
-          %a.brand{ 'ui-sref' => 'home', 'ng-click' => 'homeReset()'}
-            ArtNear.Me
-        .span10
-          %form.form-inline#search{ 'ng-submit' => 'loadMuseums()'  }
-            .query-wrapper
-              %input{name: 'query', type: 'search', :placeholder => "artist", :class => "input-xlarge", :autocomplete => 'off', 'ng-model' => 'search.query'}
-              near
-              %input{name: 'location', type: 'search', :placeholder => "address, city, state, country", :class => "input-xlarge", 'ng-model' => 'search.location'}
-              -# = link_to root_path, :class => "btn btn-link current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use my current location"} do
-              -#   %i.icon-map-marker
-            %button{ :type => 'submit', :class => "btn btn-large btn-primary", :id => "query-submit"}
-              %span.fa.fa-search
+%div{style: 'overflow:hidden'}
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        .row-fluid
+          .span2.logo-container.hidden-phone
+            %a.brand{ 'ui-sref' => 'home', 'ng-click' => 'homeReset()'}
+              ArtNear.Me
+          .span10
+            %form.form-inline#search{ 'ng-submit' => 'loadMuseums()'  }
+              .query-wrapper
+                %input{name: 'query', type: 'search', :placeholder => "artist", :class => "input-xlarge", :autocomplete => 'off', 'ng-model' => 'search.query'}
+                near
+                %input{name: 'location', type: 'search', :placeholder => "address, city, state, country", :class => "input-xlarge", 'ng-model' => 'search.location'}
+                -# = link_to root_path, :class => "btn btn-link current-location nav-utils", :data => {:toggle => "tooltip", :placement => "bottom", :'original-title' => "Use my current location"} do
+                -#   %i.icon-map-marker
+              %button{ :type => 'submit', :class => "btn btn-large btn-primary", :id => "query-submit"}
+                %span.fa.fa-search
 #map-container(art-map=true)
 .sticky-carousel
   %ul.unstyled#museum-carousel.museum-list.clearfix{'ng-if' => "museums.length > 0"}

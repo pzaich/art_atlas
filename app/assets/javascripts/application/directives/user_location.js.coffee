@@ -1,6 +1,5 @@
-ANM.directive 'userLocation', ($rootScope) ->
+ANM.directive 'userLocation', (searchState) ->
   scope:
     currentLocation: '='
   controller: ($scope, $element, $attrs) ->
-    #refactor to integrate into future searchState service
-    $rootScope.userLocation = $scope.currentLocation
+    searchState.setUserLocation($scope.currentLocation)

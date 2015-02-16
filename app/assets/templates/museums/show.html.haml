@@ -2,7 +2,7 @@
   .row-fluid
     %div{ style: 'overflow:hidden; height: 200px'}
       %section.museum-cover{ style: 'background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("{{::museum.full_url}}") 0 50% no-repeat;background-size:cover'}
-      %button.close{:type => "button", 'back' => true }
+      %a.close{'ui-sref' => 'home' }
         %span.fa.fa-angle-left
         %span.back-text
           Back

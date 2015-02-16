@@ -1,1 +1,1 @@
-ArtNearMe. Find world-famous art at locations near you. [](http://www.artnear.me/)
+ArtNearMe. Find world-famous art at locations near you. [Live](http://www.artnear.me/)

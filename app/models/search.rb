@@ -1,6 +1,6 @@
 class Search
   attr_reader :museums
-  def initialize(query, location, radius = 100)
+  def initialize(query, location, radius = 40)
     @query = query
     @location = location
     @radius = radius
@@ -28,7 +28,7 @@ class Search
   end
 
   def keep_or_expand_search
-    if @location.present? && @museums.size < 4 && @radius < 5000
+    if @location.present? && @museums.size < 3 && @radius < 5000
       @museums = Search.new(@query, @location, @radius * 2.5).museums
     end
   end

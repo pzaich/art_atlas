@@ -1,4 +1,4 @@
-ANM.controller 'MuseumCtrl', ($scope, $state, $rootScope, Museum, Painting) ->
+ANM.controller 'MuseumCtrl', ($scope, $state, Museum, Painting) ->
   $scope.paintings = []
   $scope.page = 1
 
@@ -6,7 +6,7 @@ ANM.controller 'MuseumCtrl', ($scope, $state, $rootScope, Museum, Painting) ->
     options =
       museum_id: museum.id
       page: $scope.page
-    options.query = $rootScope.search.query if $rootScope.search && $rootScope.search.query
+    # options.query = $rootScope.search.query if $rootScope.search && $rootScope.search.query
 
     $scope.page++
     Painting.query options, (response) ->

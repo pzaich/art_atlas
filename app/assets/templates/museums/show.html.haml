@@ -14,6 +14,9 @@
       .row-fluid.masonry-container{ 'masonry' => '{ "gutter": 5, isFitWidth: true }', 'column-width' => '320' }
         .masonry-brick{ 'ng-repeat' => 'painting in paintings' }
           %img{'ng-src' => '{{::painting.full_image_url}}', alt: '{{::painting.name}}'}
+          .painting-meta
+            %h5 {{ ::painting.name }}
+            %p by {{ ::painting.artist.name }}
       -#   .span3.artist-list-container
       -#     %ul.nav.nav-tabs.nav-stacked
       -#       - if @artist

@@ -10,9 +10,8 @@ ANM.factory "searchState", ($location, mapState, $rootScope) ->
 
   searchState.getCurrent = ->
     defaults =
-      query: ''
-      # query: searchState.current.query
-      # location: searchState.current.location || this._userLocation.city || this._userLocation.country_name
+      query: searchState.current.query
+      location: searchState.current.location || this._userLocation.city || this._userLocation.country_name
 
     angular.copy(angular.extend(defaults, $location.search(), this.current))
 
@@ -29,8 +28,5 @@ ANM.factory "searchState", ($location, mapState, $rootScope) ->
     if !angular.equals(newState, previousState)
       mapState.clear()
   , true
-
-
-
 
   searchState

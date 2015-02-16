@@ -22,7 +22,6 @@ ANM.directive 'artMap', ($window, $state, mapState) ->
       .addTo(scope.map)
       scope.map.setView([51.505, -0.09], 3)
 
-
       scope.map.on 'zoomend', () ->
         mapState.setState(scope.map)
 

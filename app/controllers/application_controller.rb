@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 
   def current_location
-    @current_location ||= request.location.data
+    @current_location ||= request.location.try(:data)
   end
   helper_method :current_location
 

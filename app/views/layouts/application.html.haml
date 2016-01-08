@@ -12,7 +12,7 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
 
-  %body{ 'user-location' => true, 'current-location' => "#{current_location.to_json}"}
+  %body{ 'user-location' => true, 'current-location' => "#{current_location.try(:to_json)}"}
     %div(ui-view=true)
       = yield
     = render 'shared/footer'

@@ -11,9 +11,15 @@ ANM.factory "searchState", ($location, mapState, $rootScope) ->
   searchState.getCurrent = ->
     defaults =
       query: searchState.current.query
-      location: searchState.current.location || this._userLocation.city || this._userLocation.country_name
+      location: this.getLocation()
 
     angular.copy(angular.extend(defaults, $location.search(), this.current))
+
+  searchState.getLocation = ->
+    searchState.current.location || this.locationFallback()
+
+  searchState.locationFallback = ->
+    (this._userLocation.city || this._userLocation.country_name) if this._userLocation
 
   searchState.setUserLocation = (userLocation) ->
     this._userLocation = userLocation
